@@ -37,4 +37,11 @@ class Vagas
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
 
+  public static function cadastrarVaga()
+  {
+    $conn = new Database();
+    $result = $conn->executeQuery('INSERT INTO vagas (titulo, descricao, empresa, parceiro) VALUES (?,?,?,?)');
+    $result->prepare($sql)->execute([$titulo, $descricao, $empresa, $parceiro]);
+  }
+
 }

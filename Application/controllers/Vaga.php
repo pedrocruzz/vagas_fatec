@@ -15,6 +15,12 @@ class Vaga extends Controller
     $this->view('vaga/index', ['vagas' => $data]);
   }
 
+  public function cadastrarVaga()
+  {
+    $Vagas = $this->model('Vagas'); // é retornado o model Users()
+    $data = $Vagas::findAll();
+    $this->view('vaga/index', ['vagas' => $data]);
+  }
   /**
   * chama a view show.php da seguinte forma /user/show passando um parâmetro 
   * via URL /user/show/id e é retornado um array contendo (ou não) um determinado
