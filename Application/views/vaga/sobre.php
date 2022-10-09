@@ -14,7 +14,7 @@
 <body>
     <div class="card bg-white text-white">
         <div class="ratio" style="--bs-aspect-ratio: 22%;">
-            <img src="/assets/img/FaxadaFatec.png" class="img-fluid" alt="Faxada da FATEC">
+            <img src="/assets/img/faxadaFatec.PNG" class="img-fluid" alt="Faxada da FATEC">
         </div>
         <div class="card-img-overlay">
             <h5 class="display-1 fw-normal p-3">Sobre nós:</h5>
@@ -50,7 +50,7 @@
             <div class="col">
                 <div class="d-flex justify-content-center">
                     <div class="ratio p-5" style="--bs-aspect-ratio: 57%;">
-                        <img src="/assets/img/logoFatecItapiraColorido.png" class="card-img" alt="Logo da Fatec Itapira">
+                        <img src="/assets/img/logoFatecItapiraColorido.png" class="card-img" alt="">
                     </div>
                 </div>
             </div>
