@@ -15,4 +15,12 @@ class Home extends Controller
   {
     $this->view('home/sobre');
   }
+  public function faq()
+  {
+    $this->view('home/faq');
+  }
+  public function empresasCadastradas()
+  {
+    $this->view('home/empresasCadastradas');
+  }
 }
