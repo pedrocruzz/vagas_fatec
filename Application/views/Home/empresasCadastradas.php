@@ -1,126 +1,200 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
+A<html lang="pt-br">
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap-5.1.3-dist/bootstrap-5.1.3-dist/css/bootstrap.min.css">
     <title>Empresas Cadastradas</title>
-    <style>
-      figure{
-      width: 150px;
-      height: 150PX;
-      float: center;
-      }
-    </style>
+    <link href="css/empres.css" rel="stylesheet" type="text/css">
 
-</head>
-<body>
-<h1>Área de Atuação das Empresas</h1>
+  </head>
+  <body>
 
-<script src="bootstrap-5.1.3-dist/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
-
-<div class="card-group">
+  <script src="bootstrap-5.1.3-dist/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
+  <div id="pagina">
+    <hr>
+    <h3>Área de Tecnologia</h3>
+    <div class="card-group">
     <div class="card">
-      <figure>
-      <img src="/assets/img/tec_1.jfif" alt="tecnologia">  
-      </figure>
+      <div id="figure">
+      <img src="/assets/img/empresas/Yeti-logo-vermelho_1.png" alt="tecnologia">  
+      </div>
       <div class="card-body">
-        <h5 class="card-title">Tecnologia</h5>
-        <p class="card-text">Os profissionais de TI trabalham para criar sistemas de computador, rede e comunicação de que uma organização precisa, garantindo também que esses sistemas funcionem de maneira correta e eficiente</p>
+        <h3 class="card-title">Yeti.</h3>
+        <p class="card-text">Rua Maj. David Pereira, 232 - Sala 1 - Santa Cruz, Itapira - SP.</p>
+        <p class="card-text">Fone: (19) 3863.0274</p>
+        <p class="card-text">Site:https://yeti.tec.br/</p>
       </div>
       <div class="card-footer">
-        <small class="text-muted">Última atualização: 3 mins ago</small>
+        <small class="text-muted">contato@yeti.tec.br</small>
       </div>
     </div>
     <div class="card">
-      <img src="..." class="card-img-top" alt="...">
+      <div id="figure">
+      <img src="img/logo_isis_1.png" alt="tecnologia">
+      </div>
       <div class="card-body">
-        <h5 class="card-title">Bancário</h5>
-        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        <h3 class="card-title">Isis Tecnologia Ltda.</h3>
+        <p class="card-text">Rua 15 de Novembro, 09 - Centro, Itapira - SP.</p>
+        <p class="card-text">Fone: (19) </p>
+        <p class="card-text">Site:http://isistecnologia.com.br/</p>
       </div>
       <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
+        <small class="text-muted">contato@isistecnologia.com.br</small>
       </div>
     </div>
     <div class="card">
-      <img src="..." class="card-img-top" alt="...">
+      <div id="figure">
+      <img src="img/logo_certo_original.png" alt="tecnologia">
+      </div>
       <div class="card-body">
-        <h5 class="card-title">Indústria</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+        <h3 class="card-title">Certo Soluções em Tecnologia.</h3>
+        <p class="card-text">Rua. Dr. Alexandre Coelho, 50 - Jardim Áurea, Mogi Mirim - SP.</p>
+        <p class="card-text">Fone: (19) 3549-6782</p>
+        <p class="card-text">Site:https://www.certosolucoes.com.br/solucoes/</p>
       </div>
       <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
+        <small class="text-muted">contato@certosolucoes.com.br</small>
       </div>
     </div>
+    <div class="card">
+      <div id="figure">
+      <img src="img/logo_onesys_1.png" alt="tecnologia"> 
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">Onesys Tecnologia e Comunicação Ltda.</h3>
+        <p class="card-text">Av. Marechal Castelo Branco, 469 - Centro - Mogi Guaçu - SP.</p>
+        <p class="card-text">Fone: (19) 99742 6002</p>
+        <p class="card-text">Site:https://www.onesys.com.br/produtos/</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">contato@onesys.com.br</small>
+      </div>
+    </div>
+    <div class="card">
+      <div id="figure">
+      <img src="img/logo_ci&t_1.png" alt="tecnologia"> 
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">CI&T.</h3>
+        <p class="card-text">Rua Dr. Ricardo Benetton Martins, 1.000 -Pólis de Tecnologia - Prédio Prisma - Campinas - SP.</p>
+        <p class="card-text">Fone: (19) 2102-4500</p>
+        <p class="card-text">Site:https://ciandt.com/br/pt-br</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">creative@ciandt.com</small>
+      </div>
+    </div>
+    <div class="card">
+      <div id="figure">
+      <img src="img/logo_leadTI_1.png" alt="tecnologia"> 
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">LeadTI Liderança em Tecnologia.</h3>
+        <p class="card-text">Rua Ernesto Buzo, 92 - Swift, Campinas - SP.</p>
+        <p class="card-text">Fone: (19) 3276-0779</p>
+        <p class="card-text">Site:https://www.leadti.com.br/</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">falecom@leadti.com.br</small>
+      </div>
+    </div>   
   </div>
     <hr>
+    <h3>Área de Indústria e Outras</h3>  
   <div class="card-group">    
     <div class="card">
-      <img src="..." class="card-img-top" alt="...">
+      <div id="figure">
+      <img src="img/Logo_penha_1.png" alt="embalagens de papelão ondulado">
+      </div>
       <div class="card-body">
-        <h5 class="card-title">Comércio</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+        <h3 class="card-title">Penha S/A - Embalagens de Papelão Ondulado</h3>
+        <p class="card-text"> Rua Funabashi Tokuji, 170 - Jardim Ivete, Itapira - SP.</p>
+        <p class="card-text">Fone: (19) 3863-9100</p>
+        <p class="card-text">Site:https://www.penha.com.br/</p>     
       </div>
       <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
+        <small class="text-muted">www.penha.com.br</small>
       </div>
     </div>
     <div class="card">
-      <img src="..." class="card-img-top" alt="...">
+      <div id="figure">
+      <img src="img/logo_laboratorio_cristalia_1.png" alt="farmaceuticos">
+      </div>
       <div class="card-body">
-        <h5 class="card-title">Químico</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+        <h3 class="card-title">Cristália Produtos Químicos e Farmacêuticos</h3>
+        <p class="card-text">Av. Paoletti, 363 - Santa Cruz, Itapira - SP.</p>
+        <p class="card-text">Fone: (19) 3544-5021</p>
+        <p class="card-text">Site:https://www.cristalia.com.br/</p>     
       </div>
       <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
+        <small class="text-muted">SAC 08007011918</small>
       </div>
     </div>
     <div class="card">
-      <img src="..." class="card-img-top" alt="...">
+      <div id="figure">
+      <img src="img/logo_jf_maquinas_1.png" alt="maquinas agricolas">
+      </div>
       <div class="card-body">
-        <h5 class="card-title">Hotelaria</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+        <h3 class="card-title">JF Máquinas Agrícolas Ltda</h3>
+        <p class="card-text">Rua Santa Terezinha, 921 - Jardim Guaruja, Itapira - SP.</p>
+        <p class="card-text">Fone: (19) 3863-9600</p>
+        <p class="card-text">Site:https://jfmaquinas.com/pt/</p>     
       </div>
       <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </div>
-    </div>
-  </div>
-    <hr>
-  <div class="card-group">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Hospitais</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
+        <small class="text-muted">sac@jfmaquinas.com.br</small>
       </div>
     </div>
     <div class="card">
-      <img src="..." class="card-img-top" alt="...">
+      <div id="figure">
+      <img src="img/logo-imbil_1.png" alt="bombas">
+      </div>
       <div class="card-body">
-        <h5 class="card-title">Prestação de Serviços</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+        <h3 class="card-title">IMBIL Indústria e Manutenção de Bombas ITA Ltda</h3>
+        <p class="card-text">Rua Jacob Audi, 690 - Vila Isaura, Itapira - SP.</p>
+        <p class="card-text">Fone: (19) 3843 9731</p>
+        <p class="card-text">Site:https://imbil.com.br/</p>     
       </div>
       <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
+        <small class="text-muted">rh@imbil.com.br</small>
       </div>
     </div>
     <div class="card">
-      <img src="..." class="card-img-top" alt="...">
+      <div id="figure">
+      <img src="img/logo_bairral_1.png" alt="hospital">
+      </div>
       <div class="card-body">
-        <h5 class="card-title">Áereo</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+        <h3 class="card-title">Fundação Espírita Américo Bairral</h3>
+        <p class="card-text">Rua Dr Hortêncio Pereira da Silva, 313 - Vila Pereira, Itapira - SP.</p>
+        <p class="card-text">Fone: 19) 3863-9400</p>
+        <p class="card-text">Site:https://bairral.com.br/</p>     
       </div>
       <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
+        <small class="text-muted">atendimento@bairral.com.br</small>
       </div>
     </div>
+    <div class="card">
+      <div id="figure">
+      <img src="img/logot_smc_1.png" alt="supermercado">
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">Supermercados Cubatão</h3>
+        <p class="card-text"> Rua Conselheiro Laurindo, 422 - Cubatão, Itapira - SP.</p>
+        <p class="card-text">Fone: (19) 3913-9777</p>
+        <p class="card-text">Site:https://supermercadoscubatao.com.br/</p>     
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">(19) 3913-9777</small>
+      </div>
+    </div>
+    
     <hr>
   
 
   </div>
+
+</div>
+
+
+    
 </body>
