@@ -31,7 +31,7 @@ A<html lang="pt-br">
     </div>
     <div class="card">
       <div id="figure">
-      <img src="img/logo_isis_1.png" alt="tecnologia">
+      <img src="/assets/img/empresas/logo_isis_1.png" alt="tecnologia">
       </div>
       <div class="card-body">
         <h3 class="card-title">Isis Tecnologia Ltda.</h3>
@@ -45,7 +45,7 @@ A<html lang="pt-br">
     </div>
     <div class="card">
       <div id="figure">
-      <img src="img/logo_certo_original.png" alt="tecnologia">
+      <img src="/assets/img/empresas/logo_certo_1.png" alt="tecnologia">
       </div>
       <div class="card-body">
         <h3 class="card-title">Certo Soluções em Tecnologia.</h3>
@@ -59,7 +59,7 @@ A<html lang="pt-br">
     </div>
     <div class="card">
       <div id="figure">
-      <img src="img/logo_onesys_1.png" alt="tecnologia"> 
+      <img src="/assets/img/empresas/logo_onesys_1.png" alt="tecnologia"> 
       </div>
       <div class="card-body">
         <h3 class="card-title">Onesys Tecnologia e Comunicação Ltda.</h3>
@@ -73,7 +73,7 @@ A<html lang="pt-br">
     </div>
     <div class="card">
       <div id="figure">
-      <img src="img/logo_ci&t_1.png" alt="tecnologia"> 
+      <img src="/assets/img/empresas/logo_ci&t_1.png" alt="tecnologia"> 
       </div>
       <div class="card-body">
         <h3 class="card-title">CI&T.</h3>
@@ -87,7 +87,7 @@ A<html lang="pt-br">
     </div>
     <div class="card">
       <div id="figure">
-      <img src="img/logo_leadTI_1.png" alt="tecnologia"> 
+      <img src="/assets/img/empresas/logo_leadTI_1.png" alt="tecnologia"> 
       </div>
       <div class="card-body">
         <h3 class="card-title">LeadTI Liderança em Tecnologia.</h3>
@@ -105,7 +105,7 @@ A<html lang="pt-br">
   <div class="card-group">    
     <div class="card">
       <div id="figure">
-      <img src="img/Logo_penha_1.png" alt="embalagens de papelão ondulado">
+      <img src="/assets/img/empresas/Logo_penha_1.png" alt="embalagens de papelão ondulado">
       </div>
       <div class="card-body">
         <h3 class="card-title">Penha S/A - Embalagens de Papelão Ondulado</h3>
@@ -119,7 +119,7 @@ A<html lang="pt-br">
     </div>
     <div class="card">
       <div id="figure">
-      <img src="img/logo_laboratorio_cristalia_1.png" alt="farmaceuticos">
+      <img src="/assets/img/empresas/logo_laboratorio_cristalia_1.png" alt="farmaceuticos">
       </div>
       <div class="card-body">
         <h3 class="card-title">Cristália Produtos Químicos e Farmacêuticos</h3>
@@ -133,7 +133,7 @@ A<html lang="pt-br">
     </div>
     <div class="card">
       <div id="figure">
-      <img src="img/logo_jf_maquinas_1.png" alt="maquinas agricolas">
+      <img src="/assets/img/empresas/logo_jf_maquinas_1.png" alt="maquinas agricolas">
       </div>
       <div class="card-body">
         <h3 class="card-title">JF Máquinas Agrícolas Ltda</h3>
@@ -147,7 +147,7 @@ A<html lang="pt-br">
     </div>
     <div class="card">
       <div id="figure">
-      <img src="img/logo-imbil_1.png" alt="bombas">
+      <img src="/assets/img/empresas/logo-imbil_1.png" alt="bombas">
       </div>
       <div class="card-body">
         <h3 class="card-title">IMBIL Indústria e Manutenção de Bombas ITA Ltda</h3>
@@ -161,7 +161,7 @@ A<html lang="pt-br">
     </div>
     <div class="card">
       <div id="figure">
-      <img src="img/logo_bairral_1.png" alt="hospital">
+      <img src="/assets/img/empresas/logo_bairral_1.png" alt="hospital">
       </div>
       <div class="card-body">
         <h3 class="card-title">Fundação Espírita Américo Bairral</h3>
@@ -175,7 +175,7 @@ A<html lang="pt-br">
     </div>
     <div class="card">
       <div id="figure">
-      <img src="img/logot_smc_1.png" alt="supermercado">
+      <img src="/assets/img/empresas/logot_smc_1.png" alt="supermercado">
       </div>
       <div class="card-body">
         <h3 class="card-title">Supermercados Cubatão</h3>
