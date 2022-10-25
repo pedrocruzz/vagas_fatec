@@ -36,4 +36,21 @@ class Vagas
 
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
+
+  public static function save(array $data) : bool{
+    $conn = new Database();
+    $result = $conn->executeQuery(
+      'INSERT INTO vagapreenchida(id_vagas) VALUES(:id_vagas)',
+      array(
+        ':id_vagas' => $data['id_vagas']
+
+      )
+    );
+
+    if ($result->rowCount() == 0 ) {
+      return false;
+    }
+    return true;
+  }
+
 }

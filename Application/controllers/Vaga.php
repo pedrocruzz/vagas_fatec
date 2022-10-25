@@ -13,6 +13,7 @@ class Vaga extends Controller
     $Vagas = $this->model('Vagas'); // é retornado o model Users()
     $data = $Vagas::findAll();
     $this->view('vaga/index', ['vagas' => $data]);
+
   }
 
   /**
@@ -32,6 +33,5 @@ class Vaga extends Controller
       $this->pageNotFound();
     }
   }
-
 
 }
