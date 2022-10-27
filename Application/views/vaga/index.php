@@ -7,6 +7,7 @@ if (isset($_POST['verVaga'])) { //check if form was submitted
     $input = $_POST['verVaga']; //get input text
 }
 
+
 if (isset($_POST['candidatarVaga'])) {
     $data = array(
         'id_vagas' => $_POST['id_vagas']

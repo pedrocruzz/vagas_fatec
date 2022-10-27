@@ -43,7 +43,6 @@ class Vagas
       'INSERT INTO vagapreenchida(id_vagas) VALUES(:id_vagas)',
       array(
         ':id_vagas' => $data['id_vagas']
-
       )
     );
 
