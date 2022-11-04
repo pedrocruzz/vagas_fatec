@@ -17,7 +17,7 @@ class Vagas
   public static function findAll()
   {
     $conn = new Database();
-    $result = $conn->executeQuery('SELECT * FROM vagas WHERE ativa = 1');
+    $result = $conn->executeQuery('SELECT * FROM vagas WHERE ativa = 1 && aprovada = 1');
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
 
@@ -136,6 +136,22 @@ class Vagas
     $result = $conn->executeQuery(
       "UPDATE vagas SET 
       ativa = '$ativa' 
+      WHERE id = '$id'"
+    );
+    if ($result->rowCount() == 0) {
+      return false;
+    }
+    return true;
+  }
+
+  public static function definirStatusVaga(array $data): bool
+  {
+    $aprovada = $data['status'];
+    $id = $data['id'];
+    $conn = new Database();
+    $result = $conn->executeQuery(
+      "UPDATE vagas SET 
+      aprovada = '$aprovada' 
       WHERE id = '$id'"
     );
     if ($result->rowCount() == 0) {
