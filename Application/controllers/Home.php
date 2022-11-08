@@ -23,6 +23,7 @@ class Home extends Controller
   {
     $this->view('home/empresasCadastradas');
   }
+<<<<<<< HEAD
 
   public function empresasCadastradas()
   {
@@ -38,3 +39,14 @@ class Home extends Controller
 
 }
 
+=======
+  public function cadastro_aluno()
+  {
+    $this->view('home/cadastro_aluno');
+  }
+  public function cadastro_empresa()
+  {
+    $this->view('home/cadastro_empresa');
+  }
+}
+>>>>>>> fec1ceaa8fa386a5311e676cb4081f56b4b3672e

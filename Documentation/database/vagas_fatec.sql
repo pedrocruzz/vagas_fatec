@@ -40,7 +40,7 @@ CREATE TABLE `Empresa` (
 CREATE TABLE `Vagas` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`titulo` varchar(255) NOT NULL,
-	`descricao` INT(550) NOT NULL,
+	`descricao` varchar(550) NOT NULL,
 	`periodoVagaAbrir` DATE NOT NULL,
 	`periodoVagaFechar` DATE NOT NULL,
 	`salario` FLOAT(11) NOT NULL,
@@ -65,7 +65,7 @@ CREATE TABLE `Fatec` (
 
 CREATE TABLE `VagaPreenchida` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
-	`id_vagas` INT(11) NOT NULL AUTO_INCREMENT,
+	`id_vagas` INT(11) NOT NULL,
 	`id_aluno` INT(11) NOT NULL,
 	`dataPreenchimento` DATE NOT NULL,
 	PRIMARY KEY (`id`)

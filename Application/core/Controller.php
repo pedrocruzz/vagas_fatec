@@ -3,6 +3,7 @@
 namespace Application\core;
 
 use Application\models\Vagas;
+use Application\models\Alunos;
 
 /**
 * Esta classe é responsável por instanciar um model e chamar a view correta
