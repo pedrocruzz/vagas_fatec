@@ -23,4 +23,18 @@ class Home extends Controller
   {
     $this->view('home/empresasCadastradas');
   }
+
+  public function empresasCadastradas()
+  {
+    $this->view('home/empresasCadastradas');
+  }
 }
+
+
+
+
+
+
+
+}
+
