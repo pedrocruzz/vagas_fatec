@@ -23,9 +23,8 @@ class Home extends Controller
   {
     $this->view('home/empresasCadastradas');
   }
-  public function cadastro()
+  public function cadastro_aluno()
   {
-    $this->view('home/cadastro');
+    $this->view('home/cadastro_aluno');
   }
-
 }
