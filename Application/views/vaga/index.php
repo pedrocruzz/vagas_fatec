@@ -2,6 +2,11 @@
 
 use Application\models\Vagas;
 
+foreach ($data['vagas'] as $key => $vaga){
+    if ($key == 0) { 
+        $input = $vaga['id'];
+    }
+}
 
 if (isset($_POST['verVaga'])) { //check if form was submitted
     $input = $_POST['verVaga']; //get input text
@@ -16,11 +21,11 @@ if (isset($_POST['candidatarVaga'])) {
     $result = Vagas::save($data);
 
     if($result):
-        $_SESSION['sucesso'] = 'Médico cadastrado com sucesso!';
+        $_SESSION['sucesso'];
         header('location: /vaga');
         die();
       else:
-          $_SESSION['erro'] = 'Ocorreu um erro ao cadastrar o médico, verifique as informações e tente novamente!';
+          $_SESSION['erro'] = 'Erro';
       endif;
 }
 ?>
@@ -110,7 +115,7 @@ if (isset($_POST['candidatarVaga'])) {
                             <h5 class="modal-title" id="exampleModalLabel">Cadastro na Vaga</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <input type="text" name="id_vagas" class="form-control" placeholder="Nome do médico" required value="<?= $input ?>">
+                        <input type="text" name="id_vagas" class="form-control" required value="<?= $input ?>">
                         <div class="modal-body">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">E-mail</label>
