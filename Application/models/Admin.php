@@ -13,4 +13,10 @@ public static function findAllVagasPendentes()
     $result = $conn->executeQuery('SELECT * FROM vagas WHERE aprovada = 2 && ativa = 1 ORDER BY id ASC');
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
+  public static function findAllEmpresasPendentes()
+  {
+    $conn = new Database();
+    $result = $conn->executeQuery('SELECT * FROM empresa WHERE aprovada = 2 ORDER BY id ASC');
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
 }

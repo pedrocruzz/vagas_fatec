@@ -89,7 +89,7 @@ if (isset($_POST['cadastrarEmpresa'])) {
                             </div>
                         </div>
                         <div class="col">
-                        <div class="form-floating">
+                            <div class="form-floating">
                                 <input type="text" class="form-control" id="floatingInput" value="" name="responsavel" required>
                                 <label for="floatingInput">Nome Completo do Responsável</label>
                             </div>

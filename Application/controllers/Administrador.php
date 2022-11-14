@@ -14,4 +14,9 @@ class Administrador extends Controller
     $data = Admin::findAllVagasPendentes();
     $this->view('administrador/vagas_pendentes', ['vagas' => $data]);
   }
+  public function empresasPendentes()
+  {
+    $data = Admin::findAllEmpresasPendentes();
+    $this->view('administrador/empresasPendentes', ['empresas' => $data]);
+  }
 }
