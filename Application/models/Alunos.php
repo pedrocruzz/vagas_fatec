@@ -9,8 +9,8 @@ class Alunos{
 public static function save(array $data) : bool{
     $conn = new Database();
     $result = $conn->executeQuery(
-      'INSERT INTO aluno(nome, sobrenome, dataNascimento, cpf, telefone, email, ra, cep, cidade, endereco, curso, periodo, areaInteresse, senha)
-      VALUES (:nome, :sobrenome, :dataNascimento, :cpf, :telefone, :email, :ra, :cep, :cidade, :endereco, :curso, :periodo, :areaInteresse, :senha)',
+      'INSERT INTO aluno(nome, sobrenome, dataNascimento, cpf, telefone, email, ra, cep, cidade, endereco, curso, periodo, areaInteresse, senha, dataCadastro)
+      VALUES (:nome, :sobrenome, :dataNascimento, :cpf, :telefone, :email, :ra, :cep, :cidade, :endereco, :curso, :periodo, :areaInteresse, :senha, :dataCadastro)',
       array(
         ':nome' => $data['nome'],
         ':sobrenome' => $data['sobrenome'],
@@ -26,11 +26,19 @@ public static function save(array $data) : bool{
         ':periodo' => $data['periodo'],
         ':areaInteresse' => $data['areaInteresse'],
         ':senha' => $data['senha'],
+        ':dataCadastro' => $data['dataCadastro'],
       )
     );
     if ($result->rowCount() == 0 ) {
       return false;
     }
     return true;
+  }
+
+  public static function findAll()
+  {
+    $conn = new Database();
+    $result = $conn->executeQuery('SELECT * FROM aluno');
+    return $result->fetchAll(PDO::FETCH_ASSOC);
   }
 }

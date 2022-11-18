@@ -12,8 +12,8 @@ class Empresas
   {
     $conn = new Database();
     $result = $conn->executeQuery(
-      'INSERT INTO empresa(razaoSocial, nomeFantasia, cnpj, telefone, email, responsavel, cep, cidade, endereco, website, areaAtuacao, descricao, senha)
-        VALUES (:razaoSocial, :nomeFantasia, :cnpj, :telefone, :enderecoemail, :responsavel, :cep, :cidade, :endereco, :website, :areaAtuacao, :descricao, :senha)',
+      'INSERT INTO empresa(razaoSocial, nomeFantasia, cnpj, telefone, email, responsavel, cep, cidade, endereco, website, areaAtuacao, descricao, senha, dataCadastro)
+        VALUES (:razaoSocial, :nomeFantasia, :cnpj, :telefone, :enderecoemail, :responsavel, :cep, :cidade, :endereco, :website, :areaAtuacao, :descricao, :senha, :dataCadastro)',
       array(
         ':razaoSocial' => $data['razaoSocial'],
         ':nomeFantasia' => $data['nomeFantasia'],
@@ -28,6 +28,7 @@ class Empresas
         ':areaAtuacao' => $data['areaAtuacao'],
         ':descricao' => $data['descricao'],
         ':senha' => $data['senha'],
+        ':dataCadastro' => $data['dataCadastro'],
       )
     );
     if ($result->rowCount() == 0) {
@@ -58,7 +59,8 @@ class Empresas
     }
     return true;
   }
-  public static function concederSeloParceria(array $data): bool
+
+  public static function concederParceria(array $data): bool
   {
     $parceria = $data['parceria'];
     $id = $data['id'];

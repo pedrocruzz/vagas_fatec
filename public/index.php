@@ -23,15 +23,15 @@
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <a class="navbar-brand link-dark" href="#">FATEC VAGAS</a>
-          <li><a href="#" class="nav-link px-2 link-dark">Vagas</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark">FAQ</a></li>
+          <a class="navbar-brand link-dark" href="/home/index">FATEC VAGAS</a>
+          <li><a href="/vaga/index" class="nav-link px-2 link-dark">Vagas</a></li>
+          <li><a href="/home/faq" class="nav-link px-2 link-dark">FAQ</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link link-dark text-decoration-none dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Sobre
             </a>
             <ul class="dropdown-menu text-small" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Fatec e Projeto</a></li>
+              <li><a class="dropdown-item" href="/home/sobre">Fatec e Projeto</a></li>
               <li><a class="dropdown-item" href="#">Documentos</a></li>
             </ul>
           </li>

@@ -1,6 +1,7 @@
 <?php
 
 use Application\core\Controller;
+use Application\models\Vagas;
 
 class Home extends Controller
 {
@@ -9,7 +10,8 @@ class Home extends Controller
   */
   public function index()
   {
-    $this->view('home/index');
+    $data = Vagas::findAll();
+    $this->view('home/index', ['vagas' => $data]);
   }
   public function sobre()
   {
@@ -23,25 +25,13 @@ class Home extends Controller
   {
     $this->view('home/empresasCadastradas');
   }
-<<<<<<< HEAD
 
-  public function empresasCadastradas()
-  {
-    $this->view('home/empresasCadastradas');
-  }
-}
-
-
-
-
-
-
-
-}
-
-=======
   public function cadastro_aluno()
   {
     $this->view('home/cadastro_aluno');
+  }
+  public function cadastro_empresa()
+  {
+    $this->view('home/cadastro_empresa');
   }
 }
