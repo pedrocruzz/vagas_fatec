@@ -12,8 +12,13 @@ class Usuario extends Controller
   {
         $this->view('Usuario/index');
   }
-
+  public function alterarperfil()
+  {
+        $this->view('Usuario/alterarperfil');
+  }
  
 
+
+  
 
 }
