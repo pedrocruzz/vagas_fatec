@@ -1,8 +1,9 @@
 <?php
 
 use Application\core\Controller;
+use Application\models\Alunos;
 
-class Usuario extends Controller
+class Aluno extends Controller
 {
   /**
   * chama a view index.php da seguinte forma /user/index   ou somente   /user
@@ -10,10 +11,14 @@ class Usuario extends Controller
   */
   public function index()
   {
-        $this->view('Usuario/index');
+        $this->view('Aluno/index');
   }
 
- 
+  public function perfil()
+  {
+    $data = Alunos::findAll();
+    $this->view('aluno/perfil', ['alunos' => $data]);
+  }
 
 
 }

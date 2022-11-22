@@ -59,7 +59,10 @@
                                     </div>
                                 </div>
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                        <a href="#" class="btn btn-primary">Ver perfil</a>
+                                    <form action="../aluno/perfil" method="POST">
+                                        <input type="hidden" name="id" value="<?= $aluno['id'] ?>">
+                                        <button class="btn btn-primary" name="verAluno" type="submit">Ver Perfil</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

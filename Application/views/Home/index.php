@@ -62,7 +62,6 @@
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
-            </div>
             <div class="pesquisa">
                 <div class="ratio" style="--bs-aspect-ratio: 7%;">
                     <form class="d-flex">
@@ -79,7 +78,7 @@
                         <h5 class="lead fw-normal">Empregos</h5>
                         <p class="lead">Conheça todas as oportunidades de emprego disponíveis no momento!</p>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button type="button" class="btn btn-danger btn-sm">Small button</button>
+                            <a class="btn btn-danger btn-sm" href="/vaga/index" role="button">Ver Mais</a>
                         </div>
                     </div>
                 </div>
@@ -92,7 +91,7 @@
                         <p class="lead">Conheça as empresas aqui cadastradas e as oportunidades
                             que elas oferecem!</p>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button type="button" class="btn btn-danger btn-sm">Small button</button>
+                            <a class="btn btn-danger btn-sm" href="/home/empresasCadastradas" role="button">Ver Mais</a>
                         </div>
                     </div>
                 </div>
@@ -104,7 +103,7 @@
                         <h5 class="lead fw-normal">Estágios</h5>
                         <p class="lead">Conheça todas as oportunidades de estágios disponíveis no momento! </p>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button type="button" class="btn btn-danger btn-sm">Small button</button>
+                            <a class="btn btn-danger btn-sm" href="#" role="button">Ver Mais</a>
                         </div>
                     </div>
                 </div>

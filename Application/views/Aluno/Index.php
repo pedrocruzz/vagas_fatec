@@ -52,7 +52,7 @@
       <div class="row mb-2">
         <label for="inputInformacao" class="col-sm-2 col-form-label"><strong>Sobre formação:</strong></label>
         <div class="col-sm-6">
-          <input type="informacao" class="form-control" id="inputInformacao" placeholder="Formacao, objetivos, conquitas" required>
+          <input type="informacao" class="form-control" id="inputInformacao" placeholder="Formacao, objetivos, conquistas" required>
         </div>
       </div>
        <div class="row mb-2">

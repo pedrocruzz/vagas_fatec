@@ -7,10 +7,6 @@ use Application\models\Vagas;
 
 class Administrador extends Controller
 {
-  public function index()
-  {
-    $this->view('administrador/index');
-  }
   public function vagas_pendentes()
   {
     $data = Admin::findAllVagasPendentes();
@@ -41,11 +37,8 @@ class Administrador extends Controller
     $data = Vagas::findAll();
     $this->view('administrador/vagasAtivas', ['vagas' => $data]);
   }
-  public function estatisticasGraficos()
+  public function dashboard()
   {
-    $alunos = Alunos::findAll();
-    $empresas = Admin::findAllEmpresas();
-    $vagas = Vagas::findAll();
-    $this->view('administrador/estatisticasGraficos', ['vagas' => $vagas], ['empresas' => $empresas], ['alunos' => $alunos]);
+    $this->view('administrador/dashboard');
   }
 }

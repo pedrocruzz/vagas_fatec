@@ -55,7 +55,10 @@
                                     </p>
                                 </div>
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <a href="#" class="btn btn-primary">Ver perfil</a>
+                                    <form action="../empresa/perfil" method="POST">
+                                        <input type="hidden" name="id" value="<?= $empresa['id'] ?>">
+                                        <button class="btn btn-primary" name="verEmpresa" type="submit">Ver Perfil</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

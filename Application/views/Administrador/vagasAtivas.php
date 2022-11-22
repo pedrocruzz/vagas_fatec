@@ -57,21 +57,11 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <p class="fw-normal">Funções:
-                                    <p class="text-muted"> <?= $vaga['descricaoFuncoes'] ?></p>
-                                    </p>
-                                </div>
-                                <div class="row text-break">
-                                    <p class="fw-normal">Qualificações:
-                                    <p class="text-muted"> <?= $vaga['descricaoQualificacao'] ?>
-                                    </p>
-                                    </p>
-                                </div>
-                                <div class="row text-break fw-light">
-                                    <p class="fw-normal">Benefícios;
-                                    <p class="text-muted"> <?= $vaga['descricaoBeneficios'] ?></p>
-                                    </p>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <form action="../vaga/index" method="POST">
+                                        <input type="hidden" name="id" value="<?= $vaga['id'] ?>">
+                                        <button class="btn btn-primary" name="VerVagaEspecifica" type="submit">Ver Mais</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

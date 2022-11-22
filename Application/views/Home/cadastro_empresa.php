@@ -17,7 +17,6 @@ if (isset($_POST['cadastrarEmpresa'])) {
         'areaAtuacao' => $_POST['areaAtuacao'],
         'descricao' => $_POST['descricao'],
         'senha' => $_POST['senha'],
-        'dataCadastro' => $_POST['dataCadastro'],
     );
 
     $result = Empresas::save($data);
@@ -162,7 +161,6 @@ if (isset($_POST['cadastrarEmpresa'])) {
                             </div>
                         </div>
                     </div>
-                    <input type="hidden" name="dataCadastro" value="<?= getdate(time())?>">
                     <div class="d-flex justify-content-center" style="margin-right:3%; margin-bottom:3%;">
                         <button type="submit" class="btn btn-primary" name="cadastrarEmpresa" style="width: 200px;">Salvar</button>
                     </div>

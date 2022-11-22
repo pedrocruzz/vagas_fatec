@@ -10,10 +10,11 @@ class Empresas
 
   public static function save(array $data): bool
   {
+    $date = GETDATE();
     $conn = new Database();
     $result = $conn->executeQuery(
-      'INSERT INTO empresa(razaoSocial, nomeFantasia, cnpj, telefone, email, responsavel, cep, cidade, endereco, website, areaAtuacao, descricao, senha, dataCadastro)
-        VALUES (:razaoSocial, :nomeFantasia, :cnpj, :telefone, :enderecoemail, :responsavel, :cep, :cidade, :endereco, :website, :areaAtuacao, :descricao, :senha, :dataCadastro)',
+      'INSERT INTO empresa(razaoSocial, nomeFantasia, cnpj, telefone, email, responsavel, cep, cidade, endereco, website, areaAtuacao, descricao, senha)
+        VALUES (:razaoSocial, :nomeFantasia, :cnpj, :telefone, :enderecoemail, :responsavel, :cep, :cidade, :endereco, :website, :areaAtuacao, :descricao, :senha)',
       array(
         ':razaoSocial' => $data['razaoSocial'],
         ':nomeFantasia' => $data['nomeFantasia'],
@@ -28,7 +29,6 @@ class Empresas
         ':areaAtuacao' => $data['areaAtuacao'],
         ':descricao' => $data['descricao'],
         ':senha' => $data['senha'],
-        ':dataCadastro' => $data['dataCadastro'],
       )
     );
     if ($result->rowCount() == 0) {

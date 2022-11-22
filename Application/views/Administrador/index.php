@@ -11,6 +11,33 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/f8536a8b01.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        function generatePDF() {
+            const element = document.getElementById('relatorio');
+            var opt = {
+                margin: 10,
+                filename: 'relatorio.pdf',
+                image: {
+                    type: 'jpeg',
+                    quality: 5
+                },
+                html2canvas: {
+                    dpi: 192,
+                    scale: 4,
+                    letterRendering: true,
+                    useCORS: true
+                },
+                jsPDF: {
+                    unit: 'mm',
+                    format: 'a4',
+                    orientation: 'landscape'
+                }
+            };
+            // Choose the element that our invoice is rendered in.
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sidebars/">
 
@@ -42,6 +69,14 @@
             position: fixed;
             height: 100%;
             overflow: auto;
+            z-index: 1;
+            /* Stay on top */
+            top: 0;
+            /* Stay at the top */
+            left: 0;
+            overflow-y: hidden;
+            /* Disable horizontal scroll */
+            padding-top: 15px;
         }
 
         a {
@@ -58,11 +93,11 @@
 
 
     <main>
-        <nav class="sidebar">
-            <div class="d-flex flex-column flex-shrink-0  bg-light" style="width: 280px; padding: 0%;position: absolute;">
+        <nav class="sidebar border-end">
+            <div class="d-flex flex-column flex-shrink-0  bg-light">
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li>
-                        <a href="estatisticasGraficos" class="nav-link link-dark">
+                        <a href="dashboard" class="nav-link link-dark">
                             <i class="fa-solid fa-house"></i> Dashboard
                         </a>
                     </li>
@@ -92,20 +127,19 @@
                         </ul>
                     </li>
                 </ul>
-                <div class="dropdown" style="padding-top: 225%; padding-left: 10px;">
+                <div class="dropdown" style="padding-top: 350%; padding-left: 10px;">
                     <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa-solid fa-circle-user rounded-circle me-2"></i>
                         <strong>Admin
                         </strong>
                     </a>
                     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-file"></i> Gerar relatório...</a></li>
+                        <li><a class="dropdown-item" type="button" onclick=" generatePDF()"><i class="fa-solid fa-file"></i> Gerar relatório...</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </main>
-
 
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -115,3 +149,9 @@
 </body>
 
 </html>
+
+<script>
+    function relatorio() {
+
+    }
+</script>
