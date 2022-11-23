@@ -206,6 +206,9 @@ if (isset($_POST['excluirVaga'])) {
             <div class="container" id="corpoCartao">
                 <div class="card-body">
                     <div class="accordion" id="accordionPanelsStayOpenExample">
+                    <?php if (empty($data['vagas'])) {
+                        echo '<p class=" text-center text-muted">Você não possui vagas no momento. Para cadastrar uma vaga, clique no botão acima!</p>';
+                    } ?>
                         <?php foreach ($data['vagas'] as $key => $vaga) { ?>
                             <div class="accordion-item">
                                 <div class="accordion-header" id="panelsStayOpen-headingOne">

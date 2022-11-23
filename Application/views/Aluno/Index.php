@@ -58,7 +58,11 @@
       <div class="row mb-2">
         <label for="inputInformacao" class="col-sm-2 col-form-label"><strong>Sobre formação:</strong></label>
         <div class="col-sm-6">
+<<<<<<< HEAD:Application/views/Usuario/Index.php
           <input type="informacao" class="form-control" id="inputInformacao" placeholder="Formacao, objetivos e conquitas." required>
+=======
+          <input type="informacao" class="form-control" id="inputInformacao" placeholder="Formacao, objetivos, conquistas" required>
+>>>>>>> d7143262c829d91afe18ceb3d38716815d837136:Application/views/Aluno/Index.php
         </div>
       </div>
        <div class="row mb-2">

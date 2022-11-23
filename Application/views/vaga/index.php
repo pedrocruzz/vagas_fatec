@@ -12,6 +12,9 @@ if (isset($_POST['verVaga'])) { //check if form was submitted
     $input = $_POST['verVaga']; //get input text
 }
 
+if (isset($_POST['VerVagaEspecifica'])) {
+    $input = $_POST['id'];
+}
 
 if (isset($_POST['candidatarVaga'])) {
     $data = array(
@@ -71,9 +74,14 @@ if (isset($_POST['candidatarVaga'])) {
                                     <div class="container-fluid py-5 bg-secondary bg-opacity-10">
                                         <h2 class="fw-bold"><?= $vaga['titulo'] ?></h2>
                                         <a href="#" class="link-secondary">
-                                            <p class="fw-normal fs-5"><?= $vaga['empresa'] ?></p>
+                                            <p class="fw-normal fs-5">publicado por <?= $vaga['nome_empresa'] ?></p>
                                         </a>
-                                        <p class="col-md-8"><?= $vaga['descricao']; ?></p>
+                                        <p class="col-md-8">Qualificações necessárias:</p>
+                                        <p class="col-md-8"><?= $vaga['descricaoQualificacao']; ?></p>
+                                        <p class="col-md-8">Funcões que serão exercidas:</p>
+                                        <p class="col-md-8"><?= $vaga['descricaoFuncoes']; ?></p>
+                                        <p class="col-md-8">Benefícios:</p>
+                                        <p class="col-md-8"><?= $vaga['descricaoBeneficios']; ?></p>
                                         <button type="button" class="botaoSite btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Desejo me candidatar!</button>
                                     </div>
                                 <?php } ?>
@@ -87,13 +95,13 @@ if (isset($_POST['candidatarVaga'])) {
                                     <form action="" method="post">
                                         <?php foreach ($data['vagas'] as $vaga) { ?>
                                             <button type="submit" name="verVaga" value="<?= $vaga['id'] ?>">
-                                                <a href="#" class="list-group-item list-group-item-action py-3 lh-tight" aria-current="true">
+                                                <a href="#" class="list-group-item list-group-item-action py-3 lh-tight" style="width: 400px;" aria-current="true">
                                                     <div class="row d-flex w-100 align-items-center justify-content-between">
                                                         <h5 class="col-12 mb-1"><?= $vaga['titulo'] ?></h5>
-                                                        <p class="col-4 mb-1 fw-normal" name="empresa"><u><?= $vaga['empresa'] ?></u></p>
+                                                        <p class="col-4 mb-1 fw-normal" name="empresa"><u><?= $vaga['nome_empresa'] ?></u></p>
                                                         <small class="col-4">Há 5 dias</small>
                                                     </div>
-                                                    <div class="col-10 mb-1 small" pattern="\d*" maxlength="4"><?= $vaga['descricao']; ?></div>
+                                                    <div class="col-10 mb-1 small" pattern="\d*" maxlength="4"><?= $vaga['descricaoFuncoes']; ?></div>
                                                 </a>
                                             </button>
                                         <?php } ?>

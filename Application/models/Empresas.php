@@ -10,6 +10,7 @@ class Empresas
 
   public static function save(array $data): bool
   {
+    $date = GETDATE();
     $conn = new Database();
     $result = $conn->executeQuery(
       'INSERT INTO empresa(razaoSocial, nomeFantasia, cnpj, telefone, email, responsavel, cep, cidade, endereco, website, areaAtuacao, descricao, senha)
@@ -41,5 +42,37 @@ class Empresas
     $conn = new Database();
     $result = $conn->executeQuery('SELECT * FROM vagas WHERE id_empresa = 1 && ativa = 1 ORDER BY id DESC');
     return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public static function definirStatusEmpresa(array $data): bool
+  {
+    $aprovada = $data['status'];
+    $id = $data['id'];
+    $conn = new Database();
+    $result = $conn->executeQuery(
+      "UPDATE empresa SET 
+      aprovada = '$aprovada' 
+      WHERE id = '$id'"
+    );
+    if ($result->rowCount() == 0) {
+      return false;
+    }
+    return true;
+  }
+
+  public static function concederParceria(array $data): bool
+  {
+    $parceria = $data['parceria'];
+    $id = $data['id'];
+    $conn = new Database();
+    $result = $conn->executeQuery(
+      "UPDATE empresa SET 
+      parceria = '$parceria' 
+      WHERE id = '$id'"
+    );
+    if ($result->rowCount() == 0) {
+      return false;
+    }
+    return true;
   }
 }
