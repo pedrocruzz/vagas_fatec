@@ -40,4 +40,29 @@ public static function save(array $data) : bool{
     $result = $conn->executeQuery('SELECT * FROM aluno');
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
-}
+
+  public static function alterarperfil(array $data): bool
+  {
+    $linkedin = $data['linkedin'];
+    $github = $data['github'];
+    $portifolio = $data['portifolio'];
+    $sobreformacao = $data['sobreformacao'];
+    $sobrehabilidade = $data['sobrehabilidade'];
+    $idioma = $data['idioma'];
+    
+    $conn = new Database();
+    $result = $conn->executeQuery(
+      "UPDATE aluno SET 
+      linkedin = '$linkedin', 
+      github = '$github', 
+      portifolio = '$portifolio', 
+      sobreformacao = '$sobreformacao', 
+      sobrehabilidade = '$sobrehabilidade', 
+      idioma = '$idioma', 
+      
+    );
+    if ($result->rowCount() == 0) {
+      return false;
+    }
+    return true;
+  }

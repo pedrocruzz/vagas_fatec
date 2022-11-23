@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap-5.1.3-dist/bootstrap-5.1.3-dist/css/bootstrap.min.css">
-    <title>Document</title>
+    <title>Documento</title>
 </head>
 <body>
 
@@ -47,24 +47,34 @@
           <input type="github" class="form-control" id="inputGitHub" placeholder="GitHub" required>
         </div>
       </div>
-      
+      <div class="row mb-2">
+        <label for="inputPortifolio" class="col-sm-2 col-form-label"><strong>Portifólio:</strong></label>
+        <div class="col-sm-6">
+          <input type="portifolio" class="form-control" id="inputPortifolio" placeholder="Portifólio" required>
+        </div>
+      </div>
+
       <h3>Informações Adicionais</h3>
       <div class="row mb-2">
         <label for="inputInformacao" class="col-sm-2 col-form-label"><strong>Sobre formação:</strong></label>
         <div class="col-sm-6">
+<<<<<<< HEAD:Application/views/Usuario/Index.php
+          <input type="informacao" class="form-control" id="inputInformacao" placeholder="Formacao, objetivos e conquitas." required>
+=======
           <input type="informacao" class="form-control" id="inputInformacao" placeholder="Formacao, objetivos, conquistas" required>
+>>>>>>> d7143262c829d91afe18ceb3d38716815d837136:Application/views/Aluno/Index.php
         </div>
       </div>
        <div class="row mb-2">
         <label for="inputInformaçao2" class="col-sm-2 col-form-label"><strong>Sobre habilidades:</strong></label>
         <div class="col-sm-6">
-          <input type="informacao2" class="form-control" id="inputInformaçao2" placeholder="Habilidades, Competências, experiência profissional" required>
+          <input type="informacao2" class="form-control" id="inputInformaçao2" placeholder="Habilidades, competências e experiência profissional." required>
         </div>
       </div>
       <div class="row mb-2">
         <label for="inputDisponibilidade" class="col-sm-2 col-form-label"><strong>Disponibilidade:</strong></label>
         <div class="col-sm-6">
-          <input type="disponibilidade" class="form-control" id="inputDisponibilidade" placeholder="Horários, viagens e mudanças" required>
+          <input type="disponibilidade" class="form-control" id="inputDisponibilidade" placeholder="Horários, viagens e mudanças." required>
         </div>
       </div>
       <div class="row mb-2">
@@ -79,7 +89,7 @@
       <label><strong> Escolha seu arquivo para enviar: </strong></label>
       <input type="file" id="myFile" /> <br /><br />
         
-      <input type="submit" value="submit" />
+      <input type="submit" value="enviar" />
 
   </div>
   
