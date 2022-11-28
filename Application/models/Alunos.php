@@ -58,11 +58,11 @@ public static function save(array $data) : bool{
       portifolio = '$portifolio', 
       sobreformacao = '$sobreformacao', 
       sobrehabilidade = '$sobrehabilidade', 
-      idioma = '$idioma', 
-      
+      idioma = '$idioma', "
     );
     if ($result->rowCount() == 0) {
       return false;
     }
     return true;
   }
+}

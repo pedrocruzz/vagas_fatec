@@ -8,6 +8,5 @@
 
 **Grupo:**
 - Ana Melo
-- Carlos Soares
 - Pedro Cruz
 - Valdir Oliveira

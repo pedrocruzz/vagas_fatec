@@ -65,10 +65,11 @@ class Vagas
     $sqlID = $conn->prepare('SELECT id FROM empresa ORDER BY id DESC LIMIT 1');
     $sqlID->execute();
     $sqlID->bindColumn('id', $idEmpresa);*/
-
+    $dataAbrir = $data['dataAbrir'];
+    $disponibilidade = $data['disponibilidade'];
     $result = $conn->executeQuery(
-      'INSERT INTO vagas(dataAbrir, titulo, salario, descricaoQualificacao, descricaoFuncoes, descricaoBeneficios, tipo, nivelExperiencia, periodoVagaAberta , id_empresa, nome_empresa)
-      VALUES (:dataAbrir, :cargo, :salario, :qualificacoes, :funcoes, :beneficios, :tipo, :experiencia, :disponibilidade, :id_empresa, :nome_empresa)',
+      'INSERT INTO vagas(dataAbrir, titulo, salario, descricaoQualificacao, descricaoFuncoes, descricaoBeneficios, tipo, nivelExperiencia, periodoVagaAberta , dataFechar, id_empresa, nome_empresa)
+      VALUES (:dataAbrir, :cargo, :salario, :qualificacoes, :funcoes, :beneficios, :tipo, :experiencia, :disponibilidade, :dataFechar, :id_empresa, :nome_empresa)',
       array(
         ':dataAbrir' => $data['dataAbrir'],
         ':cargo' => $data['cargo'],
@@ -79,6 +80,7 @@ class Vagas
         ':tipo' => $data['tipo'],
         ':experiencia' => $data['experiencia'],
         ':disponibilidade' => $data['disponibilidade'],
+        ':dataFechar' => date('Y-m-d', strtotime("$dataAbrir + $disponibilidade days")),
         ':id_empresa' => '1',
         ':nome_empresa' => 'Teste',
       )
@@ -159,5 +161,10 @@ class Vagas
     }
     return true;
   }
-
+  public static function findAllVagasRecentes()
+  {
+    $conn = new Database();
+    $result = $conn->executeQuery('SELECT * FROM vagas WHERE ativa = 1 && aprovada = 1 LIMIT 0,6');
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
 }

@@ -10,7 +10,7 @@ class Home extends Controller
   */
   public function index()
   {
-    $data = Vagas::findAll();
+    $data = Vagas::findAllVagasRecentes();
     $this->view('home/index', ['vagas' => $data]);
   }
   public function sobre()

@@ -65,13 +65,12 @@
             margin: 0;
             padding: 0;
             width: 200px;
-            background-color: #F8F9FA;
+            background-color: white;
             position: fixed;
             height: 100%;
             overflow: auto;
-            z-index: 1;
             /* Stay on top */
-            top: 0;
+            top: 73px;
             /* Stay at the top */
             left: 0;
             overflow-y: hidden;
@@ -82,6 +81,11 @@
         a {
             text-decoration: none;
         }
+        #itemEscondido{
+            visibility: none; 
+            display: none;
+        }
+
     </style>
 
 
@@ -91,56 +95,54 @@
 
 <body>
 
-
-    <main>
-        <nav class="sidebar border-end">
-            <div class="d-flex flex-column flex-shrink-0  bg-light">
-                <ul class="nav nav-pills flex-column mb-auto">
-                    <li>
-                        <a href="dashboard" class="nav-link link-dark">
-                            <i class="fa-solid fa-house"></i> Dashboard
-                        </a>
-                    </li>
-                    <li>
-                        <a href="alunosCadastrados" class="nav-link link-dark">
-                            <i class="fa-solid fa-graduation-cap"></i> Alunos
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn dropdown-toggle" id="dropdownMenuLink" class="nav-link link-dark" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-suitcase"></i> Vagas
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="padding-left:10px;">
-                            <li><a href="vagas_pendentes" class="link-dark rounded"><i class="fa-solid fa-circle-exclamation"></i> Pendentes</a></li>
-                            <li><a href="vagasAtivas" class="link-dark rounded"><i class="fa-solid fa-circle-check"></i> Ativas</a></a></li>
-                            <li><a href="#" class="link-dark rounded"><i class="fa-regular fa-circle-xmark"></i> Fechadas</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="btn dropdown-toggle" id="dropdownMenuLink2" class="nav-link link-dark" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-building"></i> Empresas
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink2" style="padding-left:10px;">
-                            <li><a href="empresasPendentes" class="link-dark rounded"><i class="fa-solid fa-circle-exclamation"></i> Pendentes</a></li>
-                            <li><a href="empresasCadastradas" class="link-dark rounded"><i class="fa-solid fa-circle-check"></i> Ativas</a></li>
-                            <li><a href="concederParceria" class="link-dark rounded"><i class="fa-solid fa-handshake"></i> Selo de Parceria</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <div class="dropdown" style="padding-top: 350%; padding-left: 10px;">
-                    <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-solid fa-circle-user rounded-circle me-2"></i>
-                        <strong>Admin
-                        </strong>
-                    </a>
-                    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                        <li><a class="dropdown-item" type="button" onclick=" generatePDF()"><i class="fa-solid fa-file"></i> Gerar relatório...</a></li>
+        <main>
+            <nav class="sidebar">
+                <div class="d-flex flex-column flex-shrink-0">
+                    <ul class="nav nav-pills flex-column mb-auto">
+                        <li>
+                            <a href="dashboard" class="nav-link link-dark">
+                                <i class="fa-solid fa-house"></i> Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a href="alunosCadastrados" class="nav-link link-dark">
+                                <i class="fa-solid fa-graduation-cap"></i> Alunos
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn dropdown-toggle" id="dropdownMenuLink"  style="padding-left:15px;" class="nav-link link-dark" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-suitcase"></i> Vagas
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="padding-left:10px;">
+                                <li><a href="vagas_pendentes" class="link-dark rounded"><i class="fa-solid fa-circle-exclamation"></i> Pendentes</a></li>
+                                <li><a href="vagasAtivas" class="link-dark rounded"><i class="fa-solid fa-circle-check"></i> Ativas</a></a></li>
+                                <li><a href="#" class="link-dark rounded"><i class="fa-regular fa-circle-xmark"></i> Fechadas</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="btn dropdown-toggle" id="dropdownMenuLink2"  style="padding-left:15px;" class="nav-link link-dark" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-building"></i> Empresas
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink2" style="padding-left:10px;">
+                                <li><a href="empresasPendentes" class="link-dark rounded"><i class="fa-solid fa-circle-exclamation"></i> Pendentes</a></li>
+                                <li><a href="empresasCadastradas" class="link-dark rounded"><i class="fa-solid fa-circle-check"></i> Ativas</a></li>
+                                <li><a href="concederParceria" class="link-dark rounded"><i class="fa-solid fa-handshake"></i> Selo de Parceria</a></li>
+                            </ul>
+                        </li>
                     </ul>
+                    <div class="dropdown" id="itemEscondido" style="padding-top: 310%; padding-left: 10px;">
+                        <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-circle-user rounded-circle me-2"></i>
+                            <strong>Admin
+                            </strong>
+                        </a>
+                        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                            <li><a class="dropdown-item" type="button" onclick=" generatePDF()"><i class="fa-solid fa-file"></i> Gerar relatório...</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </main>
-
+            </nav>
+        </main>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
@@ -149,9 +151,3 @@
 </body>
 
 </html>
-
-<script>
-    function relatorio() {
-
-    }
-</script>

@@ -32,7 +32,7 @@
                                         <h5 class="card-title"><?= $vaga['titulo'] ?></h5>
                                     </div>
                                     <div class="col text-end">
-                                        <h6 class="card-text">Data de Inserção: <?= $vaga['dataAbrir'] ?></h6>
+                                        <h6 class="card-text">Data de Inserção: <?= date('d/m/Y',strtotime($vaga['dataAbrir']))?></h6>
                                     </div>
                                 </div>
                                 <h6 class="card-subtitle mb-2 text-muted">publicada por <?= $vaga['nome_empresa'] ?></h6>
