@@ -17,6 +17,7 @@ if (isset($_POST['cadastrarAluno'])) {
         'curso' => $_POST['curso'],
         'periodo' => $_POST['periodo'],
         'areaInteresse' => $_POST['areaInteresse'],
+        'curriculo' => $_POST['curriculo'],
         'senha' => $_POST['senha'],
     );
 
@@ -33,6 +34,8 @@ if (isset($_POST['cadastrarAluno'])) {
     <title>Cadastro</title>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+
     <script type="text/javascript">
         var check = function() {
             if (document.getElementById('floatingInputSenha1').value ==
@@ -173,7 +176,7 @@ if (isset($_POST['cadastrarAluno'])) {
                         <div class="col text-muted" style="padding-top: 3.3%;">
                             <div class="mb-3">
                                 <label for="formFileSm" class="form-label">Insira o seu currículo:</label>
-                                <input class="form-control form-control-sm text-muted" name="curriculo" id="formFileSm" type="file">
+                                <input class="form-control form-control-sm text-muted" name="curriculo" id="formFileSm" type="file" required>
                             </div>
                         </div>
                     </div>

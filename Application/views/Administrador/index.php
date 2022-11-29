@@ -110,7 +110,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="btn dropdown-toggle" id="dropdownMenuLink"  style="padding-left:15px;" class="nav-link link-dark" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" style="padding-left:1.1rem;padding-top:0.5rem;" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fa-solid fa-suitcase"></i> Vagas
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="padding-left:10px;">
@@ -120,7 +120,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="btn dropdown-toggle" id="dropdownMenuLink2"  style="padding-left:15px;" class="nav-link link-dark" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" style="padding-left:1.1rem;padding-top:1rem;" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fa-solid fa-building"></i> Empresas
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink2" style="padding-left:10px;">

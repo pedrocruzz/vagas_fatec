@@ -28,18 +28,19 @@
           <li><a href="/home/faq" class="nav-link px-2 link-dark">FAQ</a></li>
           <li><a href="/home/sobre" class="nav-link px-2 link-dark">Sobre</a></li>
         </ul>
-        <div class="dropdown text-end">
-          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="/assets/img/fotosPerfilPadroes/avatar-cuate.svg" alt="mdo" width="32" height="32" class="rounded-circle">
-          </a>
+        <div class="dropdown text-end border-end border-secondary" style="padding-right: 2rem;">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">Cadastro</a>
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="#">Perfil</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#">Sair</a></li>
+            <li><a class="dropdown-item" href="/home/cadastro_aluno">Aluno</a></li>
+            <li><a class="dropdown-item" href="/home/cadastro_empresa">Empresa</a></li>
           </ul>
-
+        </div>
+        <div class="dropdown text-end" style="padding-left: 2rem;">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">Login</a>
+          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" href="#">Aluno</a></li>
+            <li><a class="dropdown-item" href="#">Empresa</a></li>
+          </ul>
         </div>
       </div>
     </div>

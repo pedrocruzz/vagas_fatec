@@ -58,7 +58,7 @@ if (isset($_POST['verAluno'])) {
                                 </div>
                                 <div class="row">
                                     <h5 class="fw-normal p-2">Currículo</h5>
-                                    <p class="text-muted"> <?= $aluno['curriculo'] ?></p>
+                                    <iframe src="curriculo" width="100%" height="500px">
                                 </div>
                             </div>
                         </div>

@@ -1,5 +1,9 @@
 <?php
 
+use Application\models\Vagas;
+
+$dataVagas = Vagas::findAll();
+
 if (isset($_POST['verEmpresa'])) {
     $idEmpresa = $_POST['id'];
 }
@@ -57,6 +61,34 @@ if (isset($_POST['verEmpresa'])) {
                                     <h5 class="fw-normal p-2">Sobre a empresa</h5>
                                     <p class="text-muted"> <?= $empresa['descricao'] ?></p>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="card" style="margin-top: 2rem;">
+                            <h1 class="card-title text-center border-bottom p-2"> Vagas</h1>
+                            <div class="card-body" style="height: 500px;overflow-y: scroll;">
+                                <?php if (empty($dataVagas)) {
+                                    echo '<p class=" text-center text-muted">Essa empresa não possui vagas no momento.</p>';
+                                } ?>
+                                <?php foreach ($dataVagas as $key => $vaga) { ?>
+                                    <div class="card m-2 fw-normal p-2">
+                                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                            <div class="col text-start">
+                                                <h5 style="padding-bottom: 0;"><?= $vaga['titulo'] ?></h5>
+                                            </div>
+                                            <div class="col text-end">
+                                                <form action="../vaga/index" method="POST">
+                                                    <input type="hidden" name="id" value="<?= $vaga['id'] ?>">
+                                                    <button class="btn btn-primary" name="VerVagaEspecifica" type="submit">Ver Detalhes</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="padding-top: 0; font-size: 13px;">
+                                            <p class="sm text-muted">
+                                                publicada há <?= date('d', time() - strtotime($vaga['dataAbrir'])) ?> dias
+                                            </p>
+                                        </div>
+                                    </div>
+                                <?php } ?>
                             </div>
                         </div>
                     <?php } ?>
