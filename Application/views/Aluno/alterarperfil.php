@@ -1,3 +1,19 @@
+<?php
+if (isset($_POST['alterarperfil'])) {
+    $data = array (
+        'linkedin' => $_POST[linkedin],
+        'github' => $_POST[github],
+        'portifolio' => $_POST[portifolio],
+        'sobreformacao' => $_POST[sobreformacao],
+        'sobrehabilidade' => $_POST[sobrehabilidade],
+        'idioma' => $_POST[idioma],
+
+    );
+    $result = Alunos::alterarperfil($data);
+
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
