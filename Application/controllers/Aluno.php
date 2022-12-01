@@ -20,7 +20,7 @@ class Aluno extends Controller
   }
   public function curriculo()
   {
-       $data = Alunos::findAll();
+        $data = Alunos::findAll();
         $this->view('aluno/curriculo', ['alunos' => $data]);
   }
 
