@@ -13,8 +13,15 @@ class Aluno extends Controller
   {
         $this->view('Aluno/index');
   }
-
- 
-
+  public function perfil()
+  {
+       $data = Alunos::findAll();
+        $this->view('aluno/perfil', ['alunos' => $data]);
+  }
+  public function curriculo()
+  {
+       $data = Alunos::findAll();
+        $this->view('aluno/curriculo', ['alunos' => $data]);
+  }
 
 }

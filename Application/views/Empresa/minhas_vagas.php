@@ -51,12 +51,18 @@ if (isset($_POST['excluirVaga'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minhas Vagas</title>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script> 
     <script src="https://kit.fontawesome.com/f8536a8b01.js" crossorigin="anonymous"></script>
     <style>
         #corpoCartao {
             height: 600px;
             overflow-y: scroll;
+        }
+        textarea{
+            white-space: pre-wrap;
+            overflow: auto;
         }
     </style>
 </head>
@@ -84,8 +90,8 @@ if (isset($_POST['excluirVaga'])) {
                                 <h5 class="modal-title" id="exampleModalLabel">Cadastrar Nova Vaga</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body" style="padding-left: 10%; padding-right: 10%;">
-                                <form method="post">
+                            <form method="post">
+                                <div class="modal-body" style="padding-left: 10%; padding-right: 10%;">
                                     <div class="row" style="padding-bottom: 5%;">
                                         <div class="col">
                                             <div class="form-floating">
@@ -108,21 +114,21 @@ if (isset($_POST['excluirVaga'])) {
                                     </div>
                                     <div class="row" style="padding-bottom: 5%;">
                                         <div class="form-floating">
-                                            <textarea name="qualificacoes" class="form-control text-muted text-break" id="floatingInput" rows="6" cols="60" required></textarea>
+                                            <textarea name="qualificacoes" class="form-control text-muted text-break" id="floatingInput" rows="6" onkeyup="expandirTextarea();" cols="60" required></textarea>
                                             <label for="floatingInput" style="padding-left: 4%;">Qualificações
                                                 necessárias:</label>
                                         </div>
                                     </div>
                                     <div class="row" style="padding-bottom: 5%;">
                                         <div class="form-floating">
-                                            <textarea name="funcoes" class="form-control text-muted text-break" id="floatingInput" rows="6" cols="60" required></textarea>
+                                            <textarea name="funcoes" class="form-control text-muted text-break" id="floatingInput" rows="6" onkeyup="expandirTextarea();"  cols="60" required></textarea>
                                             <label for="floatingInput" style="padding-left: 4%;">Funções que serão
                                                 exercidas:</label>
                                         </div>
                                     </div>
                                     <div class="row" style="padding-bottom: 5%;">
                                         <div class="form-floating">
-                                            <textarea name="beneficios" class="form-control text-muted text-break" id="floatingInput" rows="6" cols="60" required></textarea>
+                                            <textarea name="beneficios" class="form-control text-muted text-break" id="floatingInput" rows="6" onkeyup="expandirTextarea();"  cols="60" required></textarea>
                                             <label for="floatingInput" style="padding-left: 4%;">Benefícios:</label>
                                         </div>
                                     </div>
@@ -173,31 +179,31 @@ if (isset($_POST['excluirVaga'])) {
                                         <div class="row" style="padding-bottom: 5%;">
                                             <div class="col">
                                                 <label for="7">7 dias</label>
-                                                <input type="radio" class="text-muted" name="disponibilidade" value="7" required>
+                                                <input type="radio" class="text-muted" id="vagaPeriodoAberto" name="disponibilidade" value="7" required>
                                             </div>
                                             <div class="col">
                                                 <label for="15">15 dias</label>
-                                                <input type="radio" class="text-muted" name="disponibilidade" value="15" required>
+                                                <input type="radio" class="text-muted" id="vagaPeriodoAberto" name="disponibilidade" value="15" required>
                                             </div>
                                             <div class="col">
                                                 <label for="30">30 dias</label>
-                                                <input type="radio" class="text-muted" name="disponibilidade" value="30" required>
+                                                <input type="radio" class="text-muted" id="vagaPeriodoAberto" name="disponibilidade" value="30" required>
                                             </div>
                                             <div class="col">
                                                 <label for="60">60 dias</label>
-                                                <input type="radio" class="text-muted" name="disponibilidade" value="60" required>
+                                                <input type="radio" class="text-muted" id="vagaPeriodoAberto" name="disponibilidade" value="60" required>
                                             </div>
                                             <div class="col">
                                                 <label for="0">Indefinido</label>
-                                                <input type="radio" class="text-muted" name="disponibilidade" value="0" required>
+                                                <input type="radio" class="text-muted" id="vagaPeriodoAberto" name="disponibilidade" value="0" required>
                                             </div>
                                         </div>
                                     </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="submit" name="cadastrarVaga" class="btn btn-danger">Cadastrar vaga</button>
-                            </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="submit" name="cadastrarVaga" class="btn btn-danger">Cadastrar vaga</button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -206,9 +212,9 @@ if (isset($_POST['excluirVaga'])) {
             <div class="container" id="corpoCartao">
                 <div class="card-body">
                     <div class="accordion" id="accordionPanelsStayOpenExample">
-                    <?php if (empty($data['vagas'])) {
-                        echo '<p class=" text-center text-muted">Você não possui vagas no momento. Para cadastrar uma vaga, clique no botão acima!</p>';
-                    } ?>
+                        <?php if (empty($data['vagas'])) {
+                            echo '<p class=" text-center text-muted">Você não possui vagas no momento. Para cadastrar uma vaga, clique no botão acima!</p>';
+                        } ?>
                         <?php foreach ($data['vagas'] as $key => $vaga) { ?>
                             <div class="accordion-item">
                                 <div class="accordion-header" id="panelsStayOpen-headingOne">

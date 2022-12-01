@@ -17,12 +17,14 @@ if (isset($_POST['cadastrarAluno'])) {
         'curso' => $_POST['curso'],
         'periodo' => $_POST['periodo'],
         'areaInteresse' => $_POST['areaInteresse'],
+        'curriculo' => $_POST['curriculo'],
         'senha' => $_POST['senha'],
     );
 
     $result = Alunos::save($data);
 }
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -30,9 +32,31 @@ if (isset($_POST['cadastrarAluno'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cadastro</title>
-
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 
+    <script type="text/javascript">
+        var check = function() {
+            if (document.getElementById('floatingInputSenha1').value ==
+                document.getElementById('floatingInputSenha2').value) {
+                document.getElementById("message").style.visibility = "none";
+                document.getElementById("message").style.display = "none";
+                document.getElementById('senha1').style.color = 'green';
+                document.getElementById('senha2').style.color = 'green';
+                document.getElementById('cadastrarAluno').removeAttribute("disabled");
+
+            } else {
+                document.getElementById("message").style.visibility = "visible";
+                document.getElementById("message").style.display = "block";
+                document.getElementById('senha1').style.color = 'red';
+                document.getElementById('senha2').style.color = 'red';
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerHTML = 'Senhas inseridas não são iguais!';
+                document.getElementById('cadastrarAluno').setAttribute("disabled", "disabled");
+            }
+        }
+    </script>
     <style>
         .exampleModalToggle {
             margin: 15%;
@@ -54,7 +78,7 @@ if (isset($_POST['cadastrarAluno'])) {
                 <form method="post">
                     <div class="row">
                         <div class="col">
-                            <div class="form-floating">
+                            <div class="form-floating" action="cadastro_aluno">
                                 <input type="text" class="form-control" id="floatingInput" value="" name="nome" required>
                                 <label for="floatingInput">Nome</label>
                             </div>
@@ -152,28 +176,31 @@ if (isset($_POST['cadastrarAluno'])) {
                         <div class="col text-muted" style="padding-top: 3.3%;">
                             <div class="mb-3">
                                 <label for="formFileSm" class="form-label">Insira o seu currículo:</label>
-                                <input class="form-control form-control-sm text-muted" name="curriculo" id="formFileSm" type="file">
+                                <input class="form-control form-control-sm text-muted" name="curriculo" id="formFileSm" type="file" required>
                             </div>
                         </div>
                     </div>
                     <hr>
+                    <script>
+                    </script>
+                    <span id='message'></span>
                     <div class="row" style="padding-bottom: 4%;">
                         <div class="col">
                             <div class="form-floating">
-                                <input type="password" class="form-control" id="floatingInput" value="" name="senha" required>
-                                <label for="floatingInput">Senha</label>
+                                <input type="password" class="form-control" id="floatingInputSenha1" value="" name="senha" required>
+                                <label for="floatingInput" id="senha1">Senha</label>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-floating">
-                                <input type="password" class="form-control" id="floatingInput" value="" name="senhaConfirmada" required>
-                                <label for="floatingInput">Confirme a senha
+                                <input type="password" class="form-control" id="floatingInputSenha2" value="" name="senhaConfirmada" onkeyup='check();' required>
+                                <label for="floatingInput" id="senha2">Confirme a senha
                                 </label>
                             </div>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center" style="margin-right:3%; margin-bottom:3%;">
-                        <button type="submit" name="cadastrarAluno" class="btn btn-primary" style="width: 200px;">Salvar</button>
+                        <button type="submit" name="cadastrarAluno" id="cadastrarAluno" class="btn btn-primary" style="width: 200px;">Salvar</button>
                     </div>
                 </form>
             </div>
@@ -181,4 +208,5 @@ if (isset($_POST['cadastrarAluno'])) {
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 </body>
+
 </html>

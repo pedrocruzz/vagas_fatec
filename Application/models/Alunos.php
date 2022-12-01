@@ -9,8 +9,8 @@ class Alunos{
 public static function save(array $data) : bool{
     $conn = new Database();
     $result = $conn->executeQuery(
-      'INSERT INTO aluno(nome, sobrenome, dataNascimento, cpf, telefone, email, ra, cep, cidade, endereco, curso, periodo, areaInteresse, senha)
-      VALUES (:nome, :sobrenome, :dataNascimento, :cpf, :telefone, :email, :ra, :cep, :cidade, :endereco, :curso, :periodo, :areaInteresse, :senha)',
+      'INSERT INTO aluno(nome, sobrenome, dataNascimento, cpf, telefone, email, ra, cep, cidade, endereco, curso, periodo, areaInteresse, curriculo, senha)
+      VALUES (:nome, :sobrenome, :dataNascimento, :cpf, :telefone, :email, :ra, :cep, :cidade, :endereco, :curso, :periodo, :areaInteresse, :curriculo, :senha)',
       array(
         ':nome' => $data['nome'],
         ':sobrenome' => $data['sobrenome'],
@@ -25,6 +25,7 @@ public static function save(array $data) : bool{
         ':curso' => $data['curso'],
         ':periodo' => $data['periodo'],
         ':areaInteresse' => $data['areaInteresse'],
+        ':curriculo' => $data['curriculo'],
         ':senha' => $data['senha'],
       )
     );
@@ -58,11 +59,16 @@ public static function save(array $data) : bool{
       portifolio = '$portifolio', 
       sobreformacao = '$sobreformacao', 
       sobrehabilidade = '$sobrehabilidade', 
+<<<<<<< HEAD
       idioma = '$idioma'," 
       
+=======
+      idioma = '$idioma', "
+>>>>>>> 397b8e1e3afaaaa3a75c65a5f84e279e2fac3fde
     );
     if ($result->rowCount() == 0) {
       return false;
     }
     return true;
   }
+}
