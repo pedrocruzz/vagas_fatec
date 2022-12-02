@@ -49,7 +49,13 @@ public static function save(array $data) : bool{
     $result = $conn->executeQuery(
       "UPDATE aluno SET
       linkedin = '$linkedin'
-      WHERE id = 1"
+      github = '$github'
+      portifolio = '$portifolio'
+      sobreformacao = '$sobreformacao'
+      sobrehabilidade = '$sobrehabilidade'
+      disponibilidade = '$disponibilidade'
+      idioma = '$idioma'  
+      WHERE id = 2"
     );
     if ($result->rowCount() == 0) {
       return false;

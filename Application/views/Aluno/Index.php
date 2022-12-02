@@ -5,6 +5,13 @@ use Application\models\Alunos;
 if (isset($_POST['alterarPerfil'])) {
     $data = array (
         'linkedin' => $_POST['linkedin'],
+        'github'  => $_POST['github'],
+        'portifolio' => $_POST['portifolio'],
+        'sobreformacao' => $_POST['sobreformacao'],
+        'sobrehabilidade' => $_POST['sobrehabilidade'],
+        'disponibilidade' => $_POST['disponibilidade'],
+         'idioma' => $_POST['idioma'],
+    
     );
     $result = Alunos::alterarperfil($data);
 }
@@ -57,7 +64,7 @@ if (isset($_POST['alterarPerfil'])) {
         </div>
         <div class="col-md-6">
             <label for="validationGitHub" class="form-label"><strong>GitHub:</strong></label>
-            <input type="text" class="form-control" id="validationGitHub" value="GitHub" required>
+            <input type="text" class="form-control" id="validationGitHub" name="github" required>
             <div class="valid-feedback">
                 Looks good!
             </div>
@@ -65,7 +72,7 @@ if (isset($_POST['alterarPerfil'])) {
         </div>
         <div class="col-md-6">
             <label for="validationPortifolio" class="form-label"><strong>Portifólio:</strong></label>
-            <input type="text" class="form-control" id="validationPortifolio" value="Portifólio" required>
+            <input type="text" class="form-control" id="validationPortifolio" name="portifolio" required>
             <div class="valid-feedback">
                 Looks good!
             </div>
@@ -74,28 +81,28 @@ if (isset($_POST['alterarPerfil'])) {
         </div>
         <div class="col-md-6">
             <label for="validationSformacao" class="form-label"><strong>Sobre formação:</strong></label>
-            <input type="text" class="form-control" id="validationSformacao" value="Formação, objetivos, conquistas" required>
+            <input type="text" class="form-control" id="validationSformacao" name="sobreformacao" required>
             <div class="valid-feedback">
                 Looks good!
             </div>
         </div>
         <div class="col-md-6">
             <label for="validationShabilidades" class="form-label"><strong>Sobre habilidades:</strong></label>
-            <input type="text" class="form-control" id="validationShabilidades" value="Habilidades, competências e experiência profissional." required>
+            <input type="text" class="form-control" id="validationShabilidades" name="sobrehabilidade" required>
             <div class="valid-feedback">
                 Looks good!
             </div>
         </div>
         <div class="col-md-6">
             <label for="validationDisponibilidade" class="form-label"><strong>Disponibilidade:</strong></label>
-            <input type="text" class="form-control" id="validationDisponibilidade" value="Horários, viagens e mudanças." required>
+            <input type="text" class="form-control" id="validationDisponibilidade" name="disponibilidade" required>
             <div class="valid-feedback">
                 Looks good!
             </div>
         </div>
         <div class="col-md-6">
             <label for="validationIdioma" class="form-label"><strong>Idioma:</strong></label>
-            <input type="text" class="form-control" id="validationIdioma" value="Idioma" required>
+            <input type="text" class="form-control" id="validationIdioma" name="idioma" required>
             <div class="valid-feedback">
                 Looks good!
             </div>
