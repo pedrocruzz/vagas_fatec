@@ -31,17 +31,18 @@ if (isset($_POST['alterarPerfil'])) {
 <body>
     <script src="bootstrap-5.1.3-dist/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
     <h3>Aterar meu Perfil Profissional</h3>
+
     <form class="row g-3 needs-validation" method="post">
         <div class="col-md-6">
             <label for="validationNome" class="form-label"><strong>Nome:</strong></label>
-            <input type="text" class="form-control" id="validationNome" value="Nome" required>
+            <input type="text" class="form-control" id="validationNome" value="<?= $data['nome'] ?>" disabled>
             <div class="valid-feedback">
                 Looks good!
             </div>
         </div>
         <div class="col-md-6">
             <label for="validationEmail" class="form-label"><strong>Email:</strong></label>
-            <input type="text" class="form-control" id="validationEmail" value="Email" required>
+            <input type="text" class="form-control" id="validationEmail" value="Email" disabled>
             <div class="valid-feedback">
                 Looks good!
             </div>

@@ -40,11 +40,13 @@ class Vagas
 
   public static function save(array $data): bool
   {
+    session_start();
     $conn = new Database();
     $result = $conn->executeQuery(
-      'INSERT INTO vagapreenchida(id_vagas) VALUES(:id_vagas)',
+      'INSERT INTO vagapreenchida(id_vagas, id_aluno) VALUES(:id_vagas, :id_aluno)',
       array(
-        ':id_vagas' => $data['id_vagas']
+        ':id_vagas' => $data['id_vagas'],
+        ':id_aluno' => $_SESSION['alunoId'],
       )
     );
 

@@ -2,6 +2,12 @@
 
 use Application\models\Vagas;
 
+session_start();
+
+if(!isset($_SESSION['alunoId']) ){
+    header('location: /login');
+    exit();
+}
 foreach ($data['vagas'] as $key => $vaga){
     if ($key == 0) { 
         $input = $vaga['id'];
