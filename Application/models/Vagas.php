@@ -42,7 +42,7 @@ class Vagas
   {
     $conn = new Database();
     $result = $conn->executeQuery(
-      'INSERT INTO cadastroemvaga(id_vaga) VALUES(:id_vaga)',
+      'INSERT INTO vagapreenchida(id_vaga) VALUES(:id_vaga)',
       array(
         ':id_vaga' => $data['id_vaga']
       )

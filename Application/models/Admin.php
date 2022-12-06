@@ -76,7 +76,7 @@ public static function findAllVagasPendentes()
   public static function countCandidatosEmVagas()
   {
     $conn = new Database();
-    $result = $conn->executeQuery('SELECT COUNT(id_aluno) AS "candidatos" FROM cadastroemvaga GROUP BY MONTH(dataCadastro)');
+    $result = $conn->executeQuery('SELECT COUNT(id_aluno) AS "candidatos" FROM vagapreenchida GROUP BY MONTH(dataPreenchimento)');
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
 }

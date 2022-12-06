@@ -2,29 +2,41 @@
 
 use Application\models\Alunos;
 
-if (isset($_POST['cadastrarAluno'])) {
-    $data = array(
-        'nome' => $_POST['nome'],
-        'sobrenome' => $_POST['sobrenome'],
-        'dataNascimento' => $_POST['dataNascimento'],
-        'cpf' => $_POST['cpf'],
-        'telefone' => $_POST['telefone'],
-        'email' => $_POST['email'],
-        'ra' => $_POST['ra'],
-        'cep' => $_POST['cep'],
-        'cidade' => $_POST['cidade'],
-        'endereco' => $_POST['endereco'],
-        'curso' => $_POST['curso'],
-        'periodo' => $_POST['periodo'],
-        'areaInteresse' => $_POST['areaInteresse'],
-        'curriculo' => $_POST['curriculo'],
-        'senha' => $_POST['senha'],
-    );
+if (isset($_POST["cadastrarAluno"])) {
+    $target_dir = "C:/xampp/htdocs/vagas_fatec/Application/views/Home/uploads/";
+    $target_file = $target_dir . basename($_FILES["curriculo"]["name"]);
+    $uploadOk = 1;
+    $FileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-    $result = Alunos::save($data);
+    // Check if $uploadOk is set to 0 by an error
+    if ($uploadOk == 0) {
+        echo "Arquivo não foi armazenado.";
+        // if everything is ok, try to upload file
+    } else {
+        if (move_uploaded_file($_FILES["curriculo"]["tmp_name"], $target_file)) {
+            $data = array(
+                'nome' => $_POST['nome'],
+                'sobrenome' => $_POST['sobrenome'],
+                'dataNascimento' => $_POST['dataNascimento'],
+                'cpf' => $_POST['cpf'],
+                'telefone' => $_POST['telefone'],
+                'email' => $_POST['email'],
+                'ra' => $_POST['ra'],
+                'cep' => $_POST['cep'],
+                'cidade' => $_POST['cidade'],
+                'endereco' => $_POST['endereco'],
+                'curso' => $_POST['curso'],
+                'periodo' => $_POST['periodo'],
+                'curriculo' => basename($_FILES["curriculo"]["name"]),
+                'areaInteresse' => $_POST['areaInteresse'],
+                'senha' => $_POST['senha'],
+            );
+        
+            $result = Alunos::save($data);
+        }
+    }
 }
 ?>
-
 <!doctype html>
 <html lang="en">
 
@@ -75,10 +87,10 @@ if (isset($_POST['cadastrarAluno'])) {
         <div class="card">
             <h5 class="card-title text-center text-muted" style="padding-top: 3%;">Cadastro do Aluno</h5>
             <div class="card-body" style="padding-left: 15%; padding-right: 15%;">
-                <form method="post">
+                <form method="POST" action="cadastro_aluno" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col">
-                            <div class="form-floating" action="cadastro_aluno">
+                            <div class="form-floating">
                                 <input type="text" class="form-control" id="floatingInput" value="" name="nome" required>
                                 <label for="floatingInput">Nome</label>
                             </div>

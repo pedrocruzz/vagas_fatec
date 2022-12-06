@@ -45,7 +45,18 @@ if (isset($_POST['verAluno'])) {
                                 <div class="row">
                                     <div class="col border-bottom p-2">
                                         <h5 class="fw-normal">Cursando</h5>
-                                        <nobr class="text-muted"><?= $aluno['curso'] ?></nobr>
+                                        <nobr class="text-muted">
+                                            <?php if ($aluno['curso'] == "GE") {
+                                                echo 'Gestão Empresarial';
+                                            } else if ($aluno['curso'] == "GP") {
+                                                echo 'Gestão da Produção Industrial';
+                                            } else if ($aluno['curso'] == "GTI") {
+                                                echo 'Gestão da Tecnologia da Informação';
+                                            } else if ($aluno['curso'] == "DSM") {
+                                                echo 'Desenvolvimento de Software Multiplataforma';
+                                            }
+                                            ?>
+                                        </nobr>
                                         </p>
                                     </div>
                                 </div>
@@ -58,7 +69,7 @@ if (isset($_POST['verAluno'])) {
                                 </div>
                                 <div class="row">
                                     <h5 class="fw-normal p-2">Currículo</h5>
-                                    <iframe src="curriculo" width="100%" height="500px">
+                                    <iframe  src="Home/uploads/<?= $aluno["curriculo"]?>" style="visibility: visible;" frameborder="0"></iframe>
                                 </div>
                             </div>
                         </div>
