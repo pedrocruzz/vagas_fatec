@@ -147,9 +147,13 @@ if (isset($_POST['cadastrarEmpresa'])) {
                             </div>
                         </div>
                         <div class="col">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingInput" value="" name="areaAtuacao" required>
-                                <label for="floatingInput">Área de Atuação</label>
+                        <div class="form-floating">
+                                <select class="form-select text-muted" name="areaAtuacao" required>
+                                    <option selected disabled>Segmento</option>
+                                    <option value="servicos">Serviços</option>
+                                    <option value="comercio">Comércio</option>
+                                    <option value="industria">Indústria</option>
+                                </select>
                             </div>
                         </div>
                     </div>

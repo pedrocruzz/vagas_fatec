@@ -7,10 +7,10 @@ use Application\models\Vagas;
 
 class Administrador extends Controller
 {
-  public function vagas_pendentes()
+  public function vagasPendentes()
   {
     $data = Admin::findAllVagasPendentes();
-    $this->view('administrador/vagas_pendentes', ['vagas' => $data]);
+    $this->view('administrador/vagasPendentes', ['vagas' => $data]);
   }
   public function empresasPendentes()
   {
@@ -40,5 +40,9 @@ class Administrador extends Controller
   public function dashboard()
   {
     $this->view('administrador/dashboard');
+  }
+  public function vagasFechadas(){
+    $data = Vagas::findAllVagasFechadas();
+    $this->view('administrador/vagasFechadas', ['vagas' => $data]);
   }
 }

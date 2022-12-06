@@ -20,6 +20,7 @@ $dados = array(
 
 $dadosInativosEmpresa = Admin::countEmpresasRejeitadas();
 $dadosExcluidosVagas = Admin::countVagasExcluidas();
+$dadosFechadosVagas = Admin::countVagasFechadas();
 $dadosInativosVagas = Admin::countVagasRejeitadas();
 foreach($dadosExcluidosVagas as $key => $dado){
   $vE = $dado["vagasExcluidas"];
@@ -30,11 +31,20 @@ foreach($dadosInativosEmpresa as $key => $dado){
 foreach($dadosInativosVagas as $key => $dado){
   $vI = $dado["vagasRejeitadas"];
 }
+foreach($dadosFechadosVagas  as $key => $dado){
+  $vF = $dado["vagasFechadas"];
+}
 $dadosInativos = array(
   $eI,
   $vI,
-  $vE
+  $vE,
+  $vF
 );
+
+$dadosCandidatos = array (
+  Admin::countCandidatosEmVagas()
+);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -166,7 +176,7 @@ $dadosInativos = array(
             pointStrokeColor: '#dc3545',
             pointHighlightFill: '#fff',
             pointHighlightStroke: '#dc3545',
-            data: [28, 48, 40, 19, 86, 27, 90, 48, 40, 19, 86, 27, 90]
+            data: <?php echo json_encode($dadosCandidatos) ?>
           },
           {
             label: 'Ignorar',
@@ -221,10 +231,11 @@ $dadosInativos = array(
           'Empresas Rejeitadas',
           'Vagas Rejeitadas',
           'Vagas Excluídas',
+          'Vagas Fechadas',
         ],
         datasets: [{
           data: <?php echo json_encode($dadosInativos) ?>,
-          backgroundColor: ['#0A58CA', '#6f42c1','#B02A37'],
+          backgroundColor: ['#0A58CA','#B02A37', '#6f42c1','#0F5132'],
         }]
       }
       var donutOptions = {
@@ -285,7 +296,7 @@ $dadosInativos = array(
             data: [25, 22, 98, 38, 67, 67, 45, 53, 62, 74, 85, 93]
           },
           {
-            label: 'Empresas Ativas',
+            label: 'Empresas',
             backgroundColor: 'rgba(20, 200, 250, 1)',
             borderColor: 'rgba(60,141,188,0.8)',
             pointRadius: false,
@@ -296,18 +307,7 @@ $dadosInativos = array(
             data: [28, 48, 40, 19, 86, 27, 90, 15, 27, 36, 47, 58]
           },
           {
-            label: 'Empresas Rejeitadas',
-            backgroundColor: 'rgba(80, 100, 222, 5)',
-            borderColor: 'rgba(210, 214, 222, 1)',
-            pointRadius: false,
-            pointColor: 'rgba(210, 214, 222, 1)',
-            pointStrokeColor: '#c1c7d1',
-            pointHighlightFill: '#fff',
-            pointHighlightStroke: 'rgba(220,220,220,1)',
-            data: [65, 67, 36, 73, 15, 45, 87, 21, 33, 45,54, 63]
-          },
-          {
-            label: 'Vagas Ativas',
+            label: 'Vagas',
             backgroundColor: 'rgba(140, 50, 100, 50)',
             borderColor: 'rgba(210, 214, 222, 1)',
             pointRadius: false,
@@ -316,17 +316,6 @@ $dadosInativos = array(
             pointHighlightFill: '#fff',
             pointHighlightStroke: 'rgba(220,220,220,1)',
             data: [45, 23, 57, 83, 37, 34, 40, 31, 44, 53,65, 76]
-          },
-          {
-            label: 'Vagas Rejeitadas',
-            backgroundColor: 'rgba(210, 3, 222, 290)',
-            borderColor: 'rgba(210, 214, 222, 1)',
-            pointRadius: false,
-            pointColor: 'rgba(210, 214, 222, 1)',
-            pointStrokeColor: '#c1c7d1',
-            pointHighlightFill: '#fff',
-            pointHighlightStroke: 'rgba(220,220,220,1)',
-            data: [89, 14, 80, 81, 29, 87, 34, 42, 54, 65, 71, 85]
           },
         ]
       }

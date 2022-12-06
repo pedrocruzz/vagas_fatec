@@ -2,24 +2,24 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
-    <style>
-        .pesquisa {
-            margin-left: 23%;
-            margin-right: 23%;
-            <?php if ($data['vagas'] == NULL) {
-                echo 'padding-top: 46.5%;';
-            } else {
-                echo 'padding-top: 26.5%;';
-            } ?>
-        }
-    </style>
+    <metbutton charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+        <style>
+            .pesquisa {
+                margin-left: 23%;
+                margin-right: 23%;
+                <?php if ($data['vagas'] == NULL) {
+                    echo 'padding-top: 46.5%;';
+                } else {
+                    echo 'padding-top: 26.5%;';
+                } ?>
+            }
+        </style>
 </head>
 
 <body>
@@ -53,7 +53,7 @@
                                                                                 echo $vaga['descricaoQualificacao'];
                                                                             } ?>
                                                     </p>
-                                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
                                                         <form action="../vaga/index" method="POST">
                                                             <input type="hidden" name="id" value="<?= $vaga['id'] ?>">
                                                             <button class="btn btn-primary btn-sm" name="VerVagaEspecifica" type="submit">Ver Mais</button>
@@ -78,9 +78,10 @@
                     </button>
                 </div>
                 <div class="pesquisa">
-                    <div class="ratio" style="--bs-aspect-ratio: 7%;">
-                        <form class="d-flex">
-                            <input class=" border border-1-white rounded-pill lead fst-italic p-3" style="width: 100%;" type="search" placeholder="O que você procura?" aria-label="Search">
+                    <div class="ratio" style="--bs-aspect-ratio: 9%;">
+                        <form method="POST" action="../vaga/index">
+                            <input class=" border border-1-white rounded-pill lead fst-italic p-3" style="width: 100%;" type="search" name="titulo" placeholder="O que você procura?" aria-label="Search">
+                            <input type="submit" name="pesquisaDeVagas" style="display: none">
                         </form>
                     </div>
                 </div>
@@ -118,7 +119,9 @@
                             <h5 class="lead fw-normal">Estágios</h5>
                             <p class="lead">Conheça todas as oportunidades de estágios disponíveis no momento! </p>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <a class="btn btn-danger btn-sm" href="#" role="button">Ver Mais</a>
+                                <form method="POST" action="../vaga/index">
+                                    <button class="btn btn-danger btn-sm" type="submit" name="VerApenasEstagios">Ver Mais</button>
+                                </form>
                             </div>
                         </div>
                     </div>

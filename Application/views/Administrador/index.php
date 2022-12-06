@@ -114,9 +114,9 @@
                                 <i class="fa-solid fa-suitcase"></i> Vagas
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="padding-left:10px;">
-                                <li><a href="vagas_pendentes" class="link-dark rounded"><i class="fa-solid fa-circle-exclamation"></i> Pendentes</a></li>
+                                <li><a href="vagasPendentes" class="link-dark rounded"><i class="fa-solid fa-circle-exclamation"></i> Pendentes</a></li>
                                 <li><a href="vagasAtivas" class="link-dark rounded"><i class="fa-solid fa-circle-check"></i> Ativas</a></a></li>
-                                <li><a href="#" class="link-dark rounded"><i class="fa-regular fa-circle-xmark"></i> Fechadas</a></li>
+                                <li><a href="vagasFechadas" class="link-dark rounded"><i class="fa-regular fa-circle-xmark"></i> Fechadas</a></li>
                             </ul>
                         </li>
                         <li>
