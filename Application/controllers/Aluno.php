@@ -10,12 +10,12 @@ class Aluno extends Controller
   * e retorna para a view todos os usuários no banco de dados.
   */
   public function index()
-  {
-        $this->view('Aluno/index');
+  {      $data = Alunos::findAll();
+         $this->view('Aluno/index', ['alunos' => $data]);
   }
   public function perfil()
   {
-       $data = Alunos::findAll();
+        $data = Alunos::findAll();
         $this->view('aluno/perfil', ['alunos' => $data]);
   }
 }

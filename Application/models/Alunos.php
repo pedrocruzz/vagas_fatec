@@ -48,13 +48,13 @@ public static function save(array $data) : bool{
     $conn = new Database();
     $result = $conn->executeQuery(
       "UPDATE aluno SET
-      linkedin = '$linkedin'
-      github = '$github'
-      portifolio = '$portifolio'
-      sobreformacao = '$sobreformacao'
-      sobrehabilidade = '$sobrehabilidade'
-      disponibilidade = '$disponibilidade'
-      idioma = '$idioma'  
+      linkedin = '$linkedin',
+      github = '$github',
+      portifolio = '$portifolio',
+      sobreformacao = '$sobreformacao',
+      sobrehabilidade = '$sobrehabilidade',
+      disponibilidade = '$disponibilidade',
+      idioma = '$idioma'
       WHERE id = 2"
     );
     if ($result->rowCount() == 0) {
