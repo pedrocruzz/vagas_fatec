@@ -23,6 +23,7 @@ class LoginAluno
         $result = $result->fetchAll(PDO::FETCH_ASSOC);
         return isset($result[0]) ? $result[0] : array();
     }
+    
     public static function login()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

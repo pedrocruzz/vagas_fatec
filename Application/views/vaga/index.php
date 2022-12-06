@@ -2,7 +2,6 @@
 
 use Application\models\Vagas;
 
-<<<<<<< HEAD
 session_start();
 
 if(!isset($_SESSION['alunoId']) ){
@@ -11,10 +10,6 @@ if(!isset($_SESSION['alunoId']) ){
 }
 foreach ($data['vagas'] as $key => $vaga){
     if ($key == 0) { 
-=======
-foreach ($data['vagas'] as $key => $vaga) {
-    if ($key == 0) {
->>>>>>> db988af34d5f8403d542159a2e783a2ceecd27b9
         $input = $vaga['id'];
     }
 }
