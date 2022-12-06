@@ -52,7 +52,7 @@ if (isset($_POST['VerVagaEspecifica'])) {
 
 if (isset($_POST['candidatarVaga'])) {
     $data = array(
-        'id_vaga' => $_POST['id_vaga']
+        'id_vagas' => $_POST['id_vagas']
     );
 
     $result = Vagas::save($data);
@@ -157,7 +157,7 @@ if (isset($_POST['candidatarVaga'])) {
                             <h5 class="modal-title" id="exampleModalLabel">Cadastro na Vaga</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <input type="hidden" name="id_vaga" class="form-control" required value="<?= $input ?>">
+                        <input type="hidden" name="id_vagas" class="form-control" required value="<?= $input ?>">
                         <div class="modal-body">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">E-mail</label>
