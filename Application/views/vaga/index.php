@@ -2,8 +2,8 @@
 
 use Application\models\Vagas;
 
-foreach ($data['vagas'] as $key => $vaga){
-    if ($key == 0) { 
+foreach ($data['vagas'] as $key => $vaga) {
+    if ($key == 0) {
         $input = $vaga['id'];
     }
 }
@@ -12,24 +12,52 @@ if (isset($_POST['verVaga'])) { //check if form was submitted
     $input = $_POST['verVaga']; //get input text
 }
 
+if (isset($_POST['pesquisaDeVagas'])) {
+    $data['vagas'] = Vagas::pesquisarVagas($_POST['titulo']);
+    if (empty($data['vagas'])) {
+        echo '<h2 class="text-center text-muted position-absolute top-50 start-50 translate-middle">Vaga não encontrada!Redirecionando para a área de vagas...</h2>';
+
+        header("refresh:3;url=/vaga/index");
+    }
+    foreach ($data['vagas'] as $key => $vaga) {
+        if ($key == 0) {
+            $input = $vaga['id'];
+        }
+    }
+}
+
+if (isset($_POST['VerApenasEstagios'])) {
+    $data['vagas'] = Vagas::findAllEstagios();
+    if (empty($data['vagas'])) {
+        echo '<h2 class="text-center text-muted position-absolute top-50 start-50 translate-middle">Não há esttágios cadastrados no momento!Redirecionando para a área de vagas...</h2>';
+
+        header("refresh:3;url=/vaga/index");
+    }
+    foreach ($data['vagas'] as $key => $vaga) {
+        if ($key == 0) {
+            $input = $vaga['id'];
+        }
+    }
+}
+
 if (isset($_POST['VerVagaEspecifica'])) {
     $input = $_POST['id'];
 }
 
 if (isset($_POST['candidatarVaga'])) {
     $data = array(
-        'id_vagas' => $_POST['id_vagas']
+        'id_vaga' => $_POST['id_vaga']
     );
-    
+
     $result = Vagas::save($data);
 
-    if($result):
+    if ($result) :
         $_SESSION['sucesso'];
         header('location: /vaga');
         die();
-      else:
-          $_SESSION['erro'] = 'Erro';
-      endif;
+    else :
+        $_SESSION['erro'] = 'Erro';
+    endif;
 }
 ?>
 <!DOCTYPE html>
@@ -115,23 +143,19 @@ if (isset($_POST['candidatarVaga'])) {
             </div>
         </div>
 
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
                     <form method="post">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Cadastro na Vaga</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <input type="text" name="id_vagas" class="form-control" required value="<?= $input ?>">
+                        <input type="hidden" name="id_vaga" class="form-control" required value="<?= $input ?>">
                         <div class="modal-body">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">E-mail</label>
                                 <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                            </div>
-                            <div class="mb-3">
-                                <label for="formFile" class="form-label">Curriculo:</label>
-                                <input class="form-control form-control-sm" id="formFileSm" type="file">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" class="form-label">Deseja informar algo mais?</label>
@@ -142,10 +166,10 @@ if (isset($_POST['candidatarVaga'])) {
                             <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancelar</button>
                             <button type="submit" class="botaoSite btn btn-danger" name="candidatarVaga">Candidatar-se</button>
                         </div>
-                        </form>
-                    </div>
+                    </form>
                 </div>
             </div>
+        </div>
         <script src="../public/assets/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
         <script src="../public/assets/js/sidebars.js"></script>
 </body>

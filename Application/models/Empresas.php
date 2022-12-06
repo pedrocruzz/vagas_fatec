@@ -75,4 +75,22 @@ class Empresas
     }
     return true;
   }
+  public static function findAllEmpresasPorAreaComercio()
+  {
+    $conn = new Database();
+    $result = $conn->executeQuery("SELECT * FROM empresa WHERE aprovada = 1 && areaAtuacao LIKE 'comercio'");
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
+  public static function findAllEmpresasPorAreaServicos()
+  {
+    $conn = new Database();
+    $result = $conn->executeQuery("SELECT * FROM empresa WHERE aprovada = 1 && areaAtuacao LIKE 'servicos'");
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
+  public static function findAllEmpresasPorAreaIndustria()
+  {
+    $conn = new Database();
+    $result = $conn->executeQuery("SELECT * FROM empresa WHERE aprovada = 1 && areaAtuacao LIKE 'industria'");
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
 }

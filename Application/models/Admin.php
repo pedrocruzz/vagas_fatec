@@ -46,7 +46,7 @@ public static function findAllVagasPendentes()
   public static function countVagas()
   {
     $conn = new Database();
-    $result = $conn->executeQuery('SELECT COUNT(id) AS "vagasCadastradas" FROM vagas  WHERE ativa = 1 && aprovada = 1 LIMIT 1');
+    $result = $conn->executeQuery('SELECT COUNT(id) AS "vagasCadastradas" FROM vagas  WHERE ativa = 1 && aprovada = 1 && fechada = 2 LIMIT 1');
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
   public static function countEmpresasRejeitadas()
@@ -65,6 +65,18 @@ public static function findAllVagasPendentes()
   {
     $conn = new Database();
     $result = $conn->executeQuery('SELECT COUNT(id) AS "vagasExcluidas" FROM vagas  WHERE ativa = 0 && aprovada = 1 LIMIT 1');
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
+  public static function countVagasFechadas()
+  {
+    $conn = new Database();
+    $result = $conn->executeQuery('SELECT COUNT(id) AS "vagasFechadas" FROM vagas  WHERE ativa = 1 && aprovada = 1  && fechada = 1 LIMIT 1');
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
+  public static function countCandidatosEmVagas()
+  {
+    $conn = new Database();
+    $result = $conn->executeQuery('SELECT COUNT(id_aluno) AS "candidatos" FROM cadastroemvaga GROUP BY MONTH(dataCadastro)');
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
 }

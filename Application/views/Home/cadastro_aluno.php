@@ -150,7 +150,7 @@ if (isset($_POST['cadastrarAluno'])) {
                     <div class="row">
                         <div class="col">
                             <div class="form-floating">
-                                <select class="form-select text-muted" name="curso">
+                                <select class="form-select text-muted" name="curso" required>
                                     <option selected>Curso</option>
                                     <option value="DSM">DSM</option>
                                     <option value="GTI">GTI</option>
@@ -175,8 +175,8 @@ if (isset($_POST['cadastrarAluno'])) {
                         </div>
                         <div class="col text-muted" style="padding-top: 3.3%;">
                             <div class="mb-3">
-                                <label for="formFileSm" class="form-label">Insira o seu currículo:</label>
-                                <input class="form-control form-control-sm text-muted" name="curriculo" id="formFileSm" type="file" required>
+                                <label for="curriculo" class="form-label">Insira o seu currículo:</label>
+                                <input type="file" class="form-control form-control-sm text-muted" name="curriculo" id="curriculo" required>
                             </div>
                         </div>
                     </div>

@@ -17,7 +17,7 @@ class Vagas
   public static function findAll()
   {
     $conn = new Database();
-    $result = $conn->executeQuery('SELECT * FROM vagas WHERE ativa = 1 && aprovada = 1');
+    $result = $conn->executeQuery('SELECT * FROM vagas WHERE ativa = 1 && aprovada = 1 && fechada = 2');
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
 
@@ -42,9 +42,9 @@ class Vagas
   {
     $conn = new Database();
     $result = $conn->executeQuery(
-      'INSERT INTO vagapreenchida(id_vagas) VALUES(:id_vagas)',
+      'INSERT INTO cadastroemvaga(id_vaga) VALUES(:id_vaga)',
       array(
-        ':id_vagas' => $data['id_vagas']
+        ':id_vaga' => $data['id_vaga']
       )
     );
 
@@ -165,6 +165,21 @@ class Vagas
   {
     $conn = new Database();
     $result = $conn->executeQuery('SELECT * FROM vagas WHERE ativa = 1 && aprovada = 1 LIMIT 0,6');
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
+  public static function findAllVagasFechadas(){
+    $conn = new Database();
+    $result = $conn->executeQuery('SELECT * FROM vagas WHERE fechada = 1');
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
+  public static function pesquisarVagas($titulo){
+    $conn = new Database();
+    $result = $conn->executeQuery("SELECT * FROM vagas WHERE titulo LIKE '%$titulo%' && ativa = 1 && aprovada = 1");
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
+  public static function findAllEstagios(){
+    $conn = new Database();
+    $result = $conn->executeQuery("SELECT * FROM vagas WHERE nivelExperiencia LIKE 'Estagiário' && ativa = 1 && aprovada = 1");
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
 }

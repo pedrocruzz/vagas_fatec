@@ -2,6 +2,7 @@
 
 use Application\core\Controller;
 use Application\models\Vagas;
+use Application\models\Empresas;
 
 class Home extends Controller
 {
