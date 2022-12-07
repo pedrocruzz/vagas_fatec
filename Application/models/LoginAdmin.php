@@ -6,7 +6,7 @@ use Application\core\Database;
 
 use PDO;
 
-class LoginAluno
+class LoginAdmin
 {
 
     public static function findByEmailAndPassword(string $email, string $senha): array
@@ -14,7 +14,7 @@ class LoginAluno
         $conn = new Database();
 
         $result = $conn->executeQuery(
-            'SELECT * FROM aluno WHERE email = :EMAIL AND senha = :SENHA LIMIT 1',
+            'SELECT * FROM fatec WHERE email = :EMAIL AND senha = :SENHA LIMIT 1',
             array(
                 ':EMAIL' => $email,
                 ':SENHA' => $senha
@@ -30,17 +30,16 @@ class LoginAluno
             $email = $_POST['email'];
             $senha = $_POST['senha'];
 
-            $user = LoginAluno::findByEmailAndPassword($email, $senha);
+            $user = LoginAdmin::findByEmailAndPassword($email, $senha);
             if (!$user) {
                 echo ('<div class="alert alert-danger m-5" role="alert">
                 Esse usuário não existe!
               </div>');
             } else {
                 session_start();
-                unset($_SESSION['alunoId']);
-                $_SESSION['alunoId'] = $user['id'];
-                $_SESSION['alunoEmail'] = $email;
-                header('location: /vaga');
+                unset($_SESSION['adminId']);
+                $_SESSION['adminId'] = $user['id'];
+                header('location: /administrador/dashboard');
             }
         }
     }
@@ -49,10 +48,10 @@ class LoginAluno
     {
         session_start();
 
-        if (isset($_SESSION['aluno'])) :
-            unset($_SESSION['aluno']);
+        if (isset($_SESSION['admin'])) :
+            unset($_SESSION['admin']);
         endif;
 
-        header('location: /login/aluno');
+        header('location: /home/');
     }
 }

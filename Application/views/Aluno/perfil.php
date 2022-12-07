@@ -3,6 +3,9 @@
 if (isset($_POST['verAluno'])) {
     $idAluno = $_POST['id'];
 }
+else if (isset($_SESSION['alunoId'])) {
+    $idAluno= $_SESSION['alunoId'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

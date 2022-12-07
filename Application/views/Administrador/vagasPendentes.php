@@ -8,7 +8,7 @@ if (isset($_POST['aprovar'])) {
         'id' => $_POST['id'],
     );
     $result = Vagas::definirStatusVaga($data);
-    header('location:/administrador/vagas_pendentes');
+    header('location:/administrador/vagasPendentes');
 }
 if (isset($_POST['rejeitar'])) {
     $data = array(
@@ -16,7 +16,7 @@ if (isset($_POST['rejeitar'])) {
         'id' => $_POST['id'],
     );
     $result = Vagas::definirStatusVaga($data);
-    header('location:/administrador/vagas_pendentes');
+    header('location:/administrador/vagasPendentes');
 }
 ?>
 

@@ -20,6 +20,11 @@ if (isset($_POST['cadastrarEmpresa'])) {
     );
 
     $result = Empresas::save($data);
+    session_start();
+    unset($_SESSION['empresaId']);
+    unset($_SESSION['nomeEmpresa']);
+    $_SESSION['nomeEmpresa'] = $POST_['nomeFantasia'];
+    $_SESSION['empresaId'] = Empresas::findId($POST_['nomeFantasia']);
     header('location:../empresa/minhas_vagas');
 }
 ?>
@@ -147,7 +152,7 @@ if (isset($_POST['cadastrarEmpresa'])) {
                             </div>
                         </div>
                         <div class="col">
-                        <div class="form-floating">
+                            <div class="form-floating">
                                 <select class="form-select text-muted" name="areaAtuacao" required>
                                     <option selected disabled>Segmento</option>
                                     <option value="servicos">Serviços</option>

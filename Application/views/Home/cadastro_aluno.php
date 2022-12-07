@@ -33,6 +33,10 @@ if (isset($_POST["cadastrarAluno"])) {
             );
         
             $result = Alunos::save($data);
+            session_start();
+            unset($_SESSION['alunoId']);
+            $_SESSION['alunoId'] = Alunos::findId($POST_['email']);
+            header('location: /vaga');
         }
     }
 }

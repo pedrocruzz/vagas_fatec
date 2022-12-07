@@ -37,10 +37,10 @@ class Empresas
     return true;
   }
 
-  public static function findAll()
+  public static function findAll($idEmpresa)
   {
     $conn = new Database();
-    $result = $conn->executeQuery('SELECT * FROM vagas WHERE id_empresa = 1 && ativa = 1 ORDER BY id DESC');
+    $result = $conn->executeQuery("SELECT * FROM vagas WHERE id_empresa = '$idEmpresa' && ativa = 1 ORDER BY id DESC");
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
 
@@ -91,6 +91,13 @@ class Empresas
   {
     $conn = new Database();
     $result = $conn->executeQuery("SELECT * FROM empresa WHERE aprovada = 1 && areaAtuacao LIKE 'industria'");
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public static function findId($nomeEmpresa)
+  {
+    $conn = new Database();
+    $result = $conn->executeQuery("SELECT id FROM empresa WHERE nomeEmpresa = '$nomeEmpresa'");
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
 }

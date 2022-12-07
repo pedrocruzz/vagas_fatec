@@ -62,4 +62,10 @@ public static function save(array $data) : bool{
     }
     return true;
   }
+  public static function findId($email)
+  {
+    $conn = new Database();
+    $result = $conn->executeQuery("SELECT id FROM aluno WHERE email = '$email'");
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
 }

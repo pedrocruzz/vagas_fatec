@@ -1,6 +1,12 @@
 <?php
 
 use Application\models\Vagas;
+use Application\models\Empresas;
+
+
+session_start();
+
+$minhasVagas = Empresas::findAll($_SESSION['empresaId']);
 
 if (isset($_POST['cadastrarVaga'])) {
     $data = array(
@@ -13,6 +19,8 @@ if (isset($_POST['cadastrarVaga'])) {
         'tipo' => $_POST['tipo'],
         'experiencia' => $_POST['experiencia'],
         'disponibilidade' => $_POST['disponibilidade'],
+        'id_empresa' => $_SESSION['empresaId'],
+        'nome_empresa' => $_SESSION['nomeEmpresa'],
     );
     $result = Vagas::cadastrarVaga($data);
     header('location:/empresa/minhas_vagas');
@@ -53,18 +61,20 @@ if (isset($_POST['excluirVaga'])) {
     <title>Minhas Vagas</title>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script> 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>
     <script src="https://kit.fontawesome.com/f8536a8b01.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <style>
         #corpoCartao {
-            height: 600px;
-            overflow-y: scroll;
+        height: 600px;
+        overflow-y: scroll;
         }
         textarea{
-            white-space: pre-wrap;
-            overflow: auto;
+        white-space: pre-wrap;
+        overflow: auto;
         }
-    </style>
+        </style>
 </head>
 
 <body>
@@ -121,14 +131,14 @@ if (isset($_POST['excluirVaga'])) {
                                     </div>
                                     <div class="row" style="padding-bottom: 5%;">
                                         <div class="form-floating">
-                                            <textarea name="funcoes" class="form-control text-muted text-break" id="floatingInput" rows="6" onkeyup="expandirTextarea();"  cols="60" required></textarea>
+                                            <textarea name="funcoes" class="form-control text-muted text-break" id="floatingInput" rows="6" onkeyup="expandirTextarea();" cols="60" required></textarea>
                                             <label for="floatingInput" style="padding-left: 4%;">Funções que serão
                                                 exercidas:</label>
                                         </div>
                                     </div>
                                     <div class="row" style="padding-bottom: 5%;">
                                         <div class="form-floating">
-                                            <textarea name="beneficios" class="form-control text-muted text-break" id="floatingInput" rows="6" onkeyup="expandirTextarea();"  cols="60" required></textarea>
+                                            <textarea name="beneficios" class="form-control text-muted text-break" id="floatingInput" rows="6" onkeyup="expandirTextarea();" cols="60" required></textarea>
                                             <label for="floatingInput" style="padding-left: 4%;">Benefícios:</label>
                                         </div>
                                     </div>
@@ -212,10 +222,10 @@ if (isset($_POST['excluirVaga'])) {
             <div class="container" id="corpoCartao">
                 <div class="card-body">
                     <div class="accordion" id="accordionPanelsStayOpenExample">
-                        <?php if (empty($data['vagas'])) {
-                            echo '<p class=" text-center text-muted">Você não possui vagas no momento. Para cadastrar uma vaga, clique no botão acima!</p>';
+                        <?php if (empty($minhasVagas)) {
+                            echo '<h3 class=" text-center text-muted" style="padding-top: 25%;">Você não possui vagas no momento. Para cadastrar uma vaga, clique no botão acima!</h3>';
                         } ?>
-                        <?php foreach ($data['vagas'] as $key => $vaga) { ?>
+                        <?php foreach ($minhasVagas as $key => $vaga) { ?>
                             <div class="accordion-item">
                                 <div class="accordion-header" id="panelsStayOpen-headingOne">
                                     <div class="card-header  fw-normal">

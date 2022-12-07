@@ -133,7 +133,7 @@ if (isset($_POST['candidatarVaga'])) {
                                                     <div class="row d-flex w-100 align-items-center justify-content-between">
                                                         <h5 class="col-12 mb-1"><?= $vaga['titulo'] ?></h5>
                                                         <p class="col-4 mb-1 fw-normal" name="empresa"><u><?= $vaga['nome_empresa'] ?></u></p>
-                                                        <small class="col-4">Há 5 dias</small>
+                                                        <small class="col-4">Há <?= date('d', time() - strtotime($vaga['dataAbrir'])) ?> dias</small>
                                                     </div>
                                                     <div class="col-10 mb-1 small" pattern="\d*" maxlength="4"><?= $vaga['descricaoFuncoes']; ?></div>
                                                 </a>

@@ -21,6 +21,13 @@ class Vagas
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
 
+  public static function findAllVagasDessaEmpresa($idEmpresa)
+  {
+    $conn = new Database();
+    $result = $conn->executeQuery("SELECT * FROM vagas WHERE ativa = 1 && aprovada = 1 && fechada = 2 && id_empresa = '$idEmpresa'");
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
+
   /**
    * Este método busca um usuário armazenados na base de dados com um
    * determinado ID
@@ -54,19 +61,11 @@ class Vagas
       return false;
     }
     return true;
-  }
 
+  }
   public static function cadastrarVaga(array $data): bool
   {
     $conn = new Database();
-
-    /*$sqlNome = $conn->prepare('SELECT nomeFantasia FROM empresa WHERE id = (SELECT id FROM empresa ORDER BY id DESC LIMIT 1)');
-    $sqlNome->execute();
-    $sqlNome->bindColumn('nomeFantasia', $nomeEmpresa);
-
-    $sqlID = $conn->prepare('SELECT id FROM empresa ORDER BY id DESC LIMIT 1');
-    $sqlID->execute();
-    $sqlID->bindColumn('id', $idEmpresa);*/
     $dataAbrir = $data['dataAbrir'];
     $disponibilidade = $data['disponibilidade'];
     $result = $conn->executeQuery(
@@ -83,8 +82,8 @@ class Vagas
         ':experiencia' => $data['experiencia'],
         ':disponibilidade' => $data['disponibilidade'],
         ':dataFechar' => date('Y-m-d', strtotime("$dataAbrir + $disponibilidade days")),
-        ':id_empresa' => '1',
-        ':nome_empresa' => 'Teste',
+        ':id_empresa' => $data['id_empresa'],
+        ':nome_empresa' => $data['nome_empresa'],
       )
     );
     if ($result->rowCount() == 0) {

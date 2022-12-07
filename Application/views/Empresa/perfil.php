@@ -2,10 +2,13 @@
 
 use Application\models\Vagas;
 
-$dataVagas = Vagas::findAll();
-
 if (isset($_POST['verEmpresa'])) {
     $idEmpresa = $_POST['id'];
+    $dataVagas = Vagas::findAllVagasDessaEmpresa($idEmpresa);
+}
+else if (isset($_SESSION['empresaId'])) {
+    $idEmpresa = $_SESSION['empresaId'];
+    $dataVagas = Vagas::findAllVagasDessaEmpresa($idEmpresa);
 }
 ?>
 <!DOCTYPE html>
@@ -67,7 +70,7 @@ if (isset($_POST['verEmpresa'])) {
                             <h1 class="card-title text-center border-bottom p-2"> Vagas</h1>
                             <div class="card-body" style="height: 500px;overflow-y: scroll;">
                                 <?php if (empty($dataVagas)) {
-                                    echo '<p class=" text-center text-muted">Essa empresa não possui vagas no momento.</p>';
+                                    echo '<h3 class=" text-center text-muted" style="padding-top:25%;">Essa empresa não possui vagas no momento.</h3>';
                                 } ?>
                                 <?php foreach ($dataVagas as $key => $vaga) { ?>
                                     <div class="card m-2 fw-normal p-2">

@@ -6,17 +6,17 @@ use Application\core\Database;
 
 use PDO;
 
-class LoginAluno
+class LoginEmpresa
 {
 
-    public static function findByEmailAndPassword(string $email, string $senha): array
+    public static function findByCnpjAndPassword(string $cnpj, string $senha): array
     {
         $conn = new Database();
 
         $result = $conn->executeQuery(
-            'SELECT * FROM aluno WHERE email = :EMAIL AND senha = :SENHA LIMIT 1',
+            'SELECT * FROM empresa WHERE cnpj = :CNPJ AND senha = :SENHA LIMIT 1',
             array(
-                ':EMAIL' => $email,
+                ':CNPJ' => $cnpj,
                 ':SENHA' => $senha
             )
         );
@@ -27,20 +27,21 @@ class LoginAluno
     public static function login()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $email = $_POST['email'];
+            $cnpj = $_POST['cnpj'];
             $senha = $_POST['senha'];
 
-            $user = LoginAluno::findByEmailAndPassword($email, $senha);
+            $user = LoginEmpresa::findByCnpjAndPassword($cnpj, $senha);
             if (!$user) {
                 echo ('<div class="alert alert-danger m-5" role="alert">
                 Esse usuário não existe!
               </div>');
             } else {
                 session_start();
-                unset($_SESSION['alunoId']);
-                $_SESSION['alunoId'] = $user['id'];
-                $_SESSION['alunoEmail'] = $email;
-                header('location: /vaga');
+                unset($_SESSION['empresaId']);
+                unset($_SESSION['nomeEmpresa']);
+                $_SESSION['nomeEmpresa'] = $user['nomeFantasia'];
+                $_SESSION['empresaId'] = $user['id'];
+                header('location: /empresa/minhas_vagas');
             }
         }
     }
@@ -49,10 +50,10 @@ class LoginAluno
     {
         session_start();
 
-        if (isset($_SESSION['aluno'])) :
-            unset($_SESSION['aluno']);
+        if (isset($_SESSION['empresa'])) :
+            unset($_SESSION['empresa']);
         endif;
 
-        header('location: /login/aluno');
+        header('location: /login/empresa');
     }
 }

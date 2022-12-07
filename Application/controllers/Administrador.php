@@ -4,6 +4,7 @@ use Application\core\Controller;
 use Application\models\Admin;
 use Application\models\Alunos;
 use Application\models\Vagas;
+use Application\models\LoginAdmin;
 
 class Administrador extends Controller
 {
@@ -44,5 +45,9 @@ class Administrador extends Controller
   public function vagasFechadas(){
     $data = Vagas::findAllVagasFechadas();
     $this->view('administrador/vagasFechadas', ['vagas' => $data]);
+  }
+  public function Login(){
+    $user = LoginAdmin::login();
+    $this->view('administrador/login', ['login' => $user]);
   }
 }
