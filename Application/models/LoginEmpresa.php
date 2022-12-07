@@ -45,15 +45,4 @@ class LoginEmpresa
             }
         }
     }
-
-    public static function logout()
-    {
-        session_start();
-
-        if (isset($_SESSION['empresa'])) :
-            unset($_SESSION['empresa']);
-        endif;
-
-        header('location: /login/empresa');
-    }
 }

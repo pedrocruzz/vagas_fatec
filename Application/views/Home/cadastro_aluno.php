@@ -3,7 +3,7 @@
 use Application\models\Alunos;
 
 if (isset($_POST["cadastrarAluno"])) {
-    $target_dir = "C:/xampp/htdocs/vagas_fatec/Application/views/Home/uploads/";
+    $target_dir = "C:/xampp/htdocs/vagas_fatec/public/assets/uploads/";
     $target_file = $target_dir . basename($_FILES["curriculo"]["name"]);
     $uploadOk = 1;
     $FileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -36,7 +36,7 @@ if (isset($_POST["cadastrarAluno"])) {
             session_start();
             unset($_SESSION['alunoId']);
             $_SESSION['alunoId'] = Alunos::findId($POST_['email']);
-            header('location: /vaga');
+            header('location:../login/aluno');
         }
     }
 }

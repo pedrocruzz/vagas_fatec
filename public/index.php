@@ -1,4 +1,20 @@
 <?php
+session_start();
+
+if (isset($_POST["deslogarAluno"])) {
+  unset($_SESSION['alunoId']);
+  unset($_SESSION['alunoEmail']);
+  header('location: /home/index');
+}
+if (isset($_POST["deslogarEmpresa"])) {
+  unset($_SESSION['empresaId']);
+  unset($_SESSION['nomeEmpresa']);
+  header('location: /home/index');
+}
+if (isset($_POST["deslogarAdmin"])) {
+  unset($_SESSION['adminId']);
+  header('location: /home/index');
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -10,6 +26,7 @@
   <link rel="stylesheet" href="/assets/css/global.css">
   <link rel="stylesheet" href="/assets/bootstrap-5.1.3-dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <script src="https://kit.fontawesome.com/f8536a8b01.js" crossorigin="anonymous"></script>
   <link rel="icon" href="assets/img/logoFatecIcon.png" type="image/x-icon">
   <link href="assets/css/sidebars.css" rel="stylesheet">
 </head>
@@ -31,54 +48,58 @@
           <li><a href="/home/sobre" class="nav-link px-2 link-dark">Sobre</a></li>
         </ul>
         <?php
-        if (isset($_SESSION['alunoId'])) {
-          echo '<div class="dropdown text-end border-end border-secondary" style="padding-right: 2rem;">
-              <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">Cadastro</a>
-              <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-              <li><a class="dropdown-item" href="#">Perfil</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Sair</a></li>
-              </ul>
-              </div>';
-        } else if (isset($_SESSION['empresaId'])) {
-          echo '<div class="dropdown text-end border-end border-secondary" style="padding-right: 2rem;">
-               <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">Cadastro</a>
-               <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-               <li><a class="dropdown-item" href="#">Perfil</a></li>
-               <li>
-                 <hr class="dropdown-divider">
-               </li>
-               <li><a class="dropdown-item" href="#">Sair</a></li>
-               </ul>
-               </div>';
-        } else if (isset($_SESSION['adminId'])) {
-          echo '<div class="dropdown text-end border-end border-secondary" style="padding-right: 2rem;">
-               <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">Cadastro</a>
-               <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-               <li><a class="dropdown-item" href="#">Perfil</a></li>
-               <li>
-                 <hr class="dropdown-divider">
-               </li>
-               <li><a class="dropdown-item" href="#">Sair</a></li>
-               </ul>
-               </div>';
+        if (isset($_SESSION) &&  isset($_SESSION['alunoId'])  && $_SESSION['alunoId'] != 0) {
+          echo '<div class="dropdown text-end">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-graduation-cap rounded-circle" style="background-color: #6C757D1A;padding: 0.7rem;"></i></a>
+                      <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                      <li><a class="dropdown-item" href="../aluno/perfil">Perfil</a></li>
+                      <li><a class="dropdown-item" href="../aluno/index">Adicionar informações</a></li>
+                      <li>
+                        <hr class="dropdown-divider">
+                      </li>
+                      <form method="post">
+                      <li><button class="dropdown-item" type="submit" name="deslogarAluno">Sair</button></li>
+                      </form>
+                      </ul>
+                      </div>';
+        } else if (isset($_SESSION) &&  isset($_SESSION['empresaId']) && $_SESSION['empresaId'] != 0) {
+          echo '<div class="dropdown text-end">
+                       <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-building rounded-circle" style="background-color: #6C757D1A;padding: 0.7rem;"></i></a>
+                       <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                       <li><a class="dropdown-item" href="../empresa/perfil">Perfil</a></li>
+                       <li><a class="dropdown-item" href="../empresa/minhas_vagas">Minhas Vagas</a></li>
+                       <li>
+                         <hr class="dropdown-divider">
+                       </li>
+                       <form method="post">
+                       <li><button class="dropdown-item" type="submit" name="deslogarEmpresa">Sair</button></li>
+                       </form>
+                       </ul>
+                       </div>';
+        } else if (isset($_SESSION) && isset($_SESSION['adminId'])  && $_SESSION['adminId'] != 0) {
+          echo '<div class="dropdown text-end">
+                       <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-user rounded-circle" style="background-color: #6C757D1A;padding: 0.7rem;"></i></a>
+                       <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                       <form method="post">
+                       <li><button class="dropdown-item" type="submit" name="deslogarAdmin">Sair</button></li>
+                       </form>
+                       </ul>
+                       </div>';
         } else {
           echo '<div class="dropdown text-end border-end border-secondary" style="padding-right: 2rem;">
-              <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">Cadastro</a>
-              <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                <li><a class="dropdown-item" href="/home/cadastro_aluno">Aluno</a></li>
-                <li><a class="dropdown-item" href="/home/cadastro_empresa">Empresa</a></li>
-              </ul>
-            </div>
-            <div class="dropdown text-end" style="padding-left: 2rem;">
-              <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">Login</a>
-              <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                <li><a class="dropdown-item" href="/login/aluno">Aluno</a></li>
-                <li><a class="dropdown-item" href="/login/empresa">Empresa</a></li>
-              </ul>
-            </div>';
+                      <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">Cadastro</a>
+                      <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="/home/cadastro_aluno">Aluno</a></li>
+                        <li><a class="dropdown-item" href="/home/cadastro_empresa">Empresa</a></li>
+                      </ul>
+                    </div>
+                    <div class="dropdown text-end" style="padding-left: 2rem;">
+                      <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">Login</a>
+                      <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="/login/aluno">Aluno</a></li>
+                        <li><a class="dropdown-item" href="/login/empresa">Empresa</a></li>
+                      </ul>
+                    </div>';
         }
         ?>
       </div>

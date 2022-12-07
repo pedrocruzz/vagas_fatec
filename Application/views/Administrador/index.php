@@ -132,9 +132,7 @@
                     </ul>
                     <div class="dropdown" id="itemEscondido" style="padding-top: 310%; padding-left: 10px;">
                         <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-circle-user rounded-circle me-2"></i>
-                            <strong>Admin
-                            </strong>
+                            <i class="fa-solid fa-gear"></i>
                         </a>
                         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
                             <li><a class="dropdown-item" type="button" onclick=" generatePDF()"><i class="fa-solid fa-file"></i> Gerar relatório...</a></li>

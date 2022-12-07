@@ -38,21 +38,11 @@ class LoginAluno
             } else {
                 session_start();
                 unset($_SESSION['alunoId']);
+                unset($_SESSION['alunoEmail']);
                 $_SESSION['alunoId'] = $user['id'];
-                $_SESSION['alunoEmail'] = $email;
+                $_SESSION['alunoEmail'] = $user['email'];
                 header('location: /vaga');
             }
         }
-    }
-
-    public static function logout()
-    {
-        session_start();
-
-        if (isset($_SESSION['aluno'])) :
-            unset($_SESSION['aluno']);
-        endif;
-
-        header('location: /login/aluno');
     }
 }

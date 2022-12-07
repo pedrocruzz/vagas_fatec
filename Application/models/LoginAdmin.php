@@ -43,15 +43,4 @@ class LoginAdmin
             }
         }
     }
-
-    public static function logout()
-    {
-        session_start();
-
-        if (isset($_SESSION['admin'])) :
-            unset($_SESSION['admin']);
-        endif;
-
-        header('location: /home/');
-    }
 }

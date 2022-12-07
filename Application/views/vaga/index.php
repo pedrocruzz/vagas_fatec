@@ -2,10 +2,12 @@
 
 use Application\models\Vagas;
 
-session_start();
+if (session_status() == PHP_SESSION_NONE){
+    session_start();
+}
 
 if(!isset($_SESSION['alunoId']) ){
-    header('location: /login');
+    header('location: /login/aluno');
     exit();
 }
 foreach ($data['vagas'] as $key => $vaga){
@@ -124,7 +126,7 @@ if (isset($_POST['candidatarVaga'])) {
                     </div>
                     <div class="col-4">
                         <main>
-                            <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 380px;">
+                            <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 400px; height: 1100px; overflow-y: scroll;">
                                 <div class="list-group list-group-flush border-bottom scrollarea">
                                     <form action="" method="post">
                                         <?php foreach ($data['vagas'] as $vaga) { ?>
@@ -161,7 +163,7 @@ if (isset($_POST['candidatarVaga'])) {
                         <div class="modal-body">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">E-mail</label>
-                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                                <input type="email" class="form-control" value="<?= $_SESSION['alunoEmail']?>" id="exampleFormControlInput1" placeholder="name@example.com">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" class="form-label">Deseja informar algo mais?</label>

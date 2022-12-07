@@ -165,7 +165,7 @@ class Vagas
   public static function findAllVagasRecentes()
   {
     $conn = new Database();
-    $result = $conn->executeQuery('SELECT * FROM vagas WHERE ativa = 1 && aprovada = 1 LIMIT 0,6');
+    $result = $conn->executeQuery('SELECT * FROM vagas WHERE ativa = 1 && aprovada = 1 ORDER BY id DESC LIMIT 6');
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
   public static function findAllVagasFechadas(){

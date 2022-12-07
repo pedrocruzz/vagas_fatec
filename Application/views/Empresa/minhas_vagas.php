@@ -3,9 +3,6 @@
 use Application\models\Vagas;
 use Application\models\Empresas;
 
-
-session_start();
-
 $minhasVagas = Empresas::findAll($_SESSION['empresaId']);
 
 if (isset($_POST['cadastrarVaga'])) {

@@ -43,19 +43,26 @@ public static function save(array $data) : bool{
   }
 
   public static function alterarperfil(array $data): bool
-  {
-    $linkedin = $data['linkedin'];    
+  {    
+    $linkedin =  $data['linkedin'];
+    $github = $data['github'];
+    $portifolio = $data['portifolio'];
+    $sobreformacao = $data['sobreformacao'];
+    $sobrehabilidade = $data['sobrehabilidade'];
+    $disponibilidade = $data['disponibilidade'];
+    $idioma = $data['idiomas'];
+    $id = $_SESSION['alunoId'];
     $conn = new Database();
     $result = $conn->executeQuery(
       "UPDATE aluno SET
-      linkedin = '$linkedin',
-      github = '$github',
-      portifolio = '$portifolio',
-      sobreformacao = '$sobreformacao',
-      sobrehabilidade = '$sobrehabilidade',
-      disponibilidade = '$disponibilidade',
-      idioma = '$idioma'
-      WHERE id = 2"
+      linkedin =  $linkedin,
+      github = $github,
+      portifolio = $portifolio,
+      sobreformacao = $sobreformacao,
+      sobrehabilidade = $sobrehabilidade,
+      disponibilidade = $disponibilidade,
+      idioma = $idioma
+      WHERE id = $id"
     );
     if ($result->rowCount() == 0) {
       return false;

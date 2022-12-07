@@ -25,7 +25,7 @@ if (isset($_POST['cadastrarEmpresa'])) {
     unset($_SESSION['nomeEmpresa']);
     $_SESSION['nomeEmpresa'] = $POST_['nomeFantasia'];
     $_SESSION['empresaId'] = Empresas::findId($POST_['nomeFantasia']);
-    header('location:../empresa/minhas_vagas');
+    header('location:../login/empresa');
 }
 ?>
 <!doctype html>
