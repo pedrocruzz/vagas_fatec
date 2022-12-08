@@ -37,12 +37,24 @@ class Empresas
     return true;
   }
 
-  public static function findAll($idEmpresa)
+  public static function findAll()
   {
     $conn = new Database();
-    $result = $conn->executeQuery("SELECT * FROM vagas WHERE id_empresa = '$idEmpresa' && ativa = 1 ORDER BY id DESC");
+    $result = $conn->executeQuery('SELECT * FROM vagas WHERE id_empresa = 1 && ativa = 1 ORDER BY id DESC');
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
+
+  
+  public static function findVisualizar($idVaga)
+  {
+    $conn = new Database();
+    $result = $conn->executeQuery('SELECT * FROM vagapreenchida p INNER JOIN aluno a ON p.id_aluno = a.id WHERE id_vagas = :ID LIMIT 1', array(
+      ':ID' => $idVaga
+    ));
+
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
+
 
   public static function definirStatusEmpresa(array $data): bool
   {
@@ -122,3 +134,5 @@ class Empresas
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
 }
+
+
