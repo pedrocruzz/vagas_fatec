@@ -3,8 +3,6 @@
 use Application\models\Vagas;
 use Application\models\Empresas;
 
-$minhasVagas = Empresas::findAll($_SESSION['empresaId']);
-
 if (isset($_POST['cadastrarVaga'])) {
     $data = array(
         'dataAbrir' => $_POST['dataAbrir'],
@@ -16,8 +14,6 @@ if (isset($_POST['cadastrarVaga'])) {
         'tipo' => $_POST['tipo'],
         'experiencia' => $_POST['experiencia'],
         'disponibilidade' => $_POST['disponibilidade'],
-        'id_empresa' => $_SESSION['empresaId'],
-        'nome_empresa' => $_SESSION['nomeEmpresa'],
     );
     $result = Vagas::cadastrarVaga($data);
     header('location:/empresa/minhas_vagas');
@@ -46,6 +42,7 @@ if (isset($_POST['excluirVaga'])) {
     $result = Vagas::excluirVaga($data);
     header('location:/empresa/minhas_vagas');
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -60,18 +57,17 @@ if (isset($_POST['excluirVaga'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>
     <script src="https://kit.fontawesome.com/f8536a8b01.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <style>
         #corpoCartao {
-        height: 600px;
-        overflow-y: scroll;
+            height: 600px;
+            overflow-y: scroll;
         }
-        textarea{
-        white-space: pre-wrap;
-        overflow: auto;
+
+        textarea {
+            white-space: pre-wrap;
+            overflow: auto;
         }
-        </style>
+    </style>
 </head>
 
 <body>
@@ -219,10 +215,10 @@ if (isset($_POST['excluirVaga'])) {
             <div class="container" id="corpoCartao">
                 <div class="card-body">
                     <div class="accordion" id="accordionPanelsStayOpenExample">
-                        <?php if (empty($minhasVagas)) {
-                            echo '<h3 class=" text-center text-muted" style="padding-top: 25%;">Você não possui vagas no momento. Para cadastrar uma vaga, clique no botão acima!</h3>';
+                        <?php if (empty($data['vagas'])) {
+                            echo '<p class=" text-center text-muted">Você não possui vagas no momento. Para cadastrar uma vaga, clique no botão acima!</p>';
                         } ?>
-                        <?php foreach ($minhasVagas as $key => $vaga) { ?>
+                        <?php foreach ($data['vagas'] as $key => $vaga) { ?>
                             <div class="accordion-item">
                                 <div class="accordion-header" id="panelsStayOpen-headingOne">
                                     <div class="card-header  fw-normal">
@@ -251,11 +247,33 @@ if (isset($_POST['excluirVaga'])) {
                                             </div>
                                             <div class="col text-end" style="padding-top: 2%;padding-bottom: 2%;">
                                                 <?php if ($vaga['aprovada'] == 1) { ?>
-                                                    <button type="button" class="btn btn-secondary" name="verCurriculos">
+                                                    <button type="button" class="btn btn-secondary" name="verCurriculos" data-bs-toggle="modal" data-bs-target="#modalVisualizar<?= $vaga['id'] ?>">
                                                         <i class="fa-solid fa-file"></i> Currículos submetidos
                                                     </button>
+                                                    <div class="modal fade" id="modalVisualizar<?= $vaga['id'] ?>" tabindex="-1" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title">Visualizar Currículos</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+
+                                                                <div class="modal-body" style="font-size:15px;">
+                                                                    <?php $idVz = $vaga['id']; $vagaVz['vagasPreenchidas'] = Empresas::findVisualizar($idVaga = $idVz); ?>
+                                                                    <?php foreach ($vagaVz['vagasPreenchidas'] as $vagasVz) { ?>
+                                                                        <?= $vagasVz['nome'] ?>
+                                                                    <?php } ?>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sair</button>
+                                                                </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAterar<?= $vaga['id'] ?>">
-                                                        <i class="fa-solid fa-pencil"></i>
+                                                        <i class="fa-solid fa-penci
+                                                        l"></i>
                                                     </button>
                                                     <div class="modal fade" id="modalAterar<?= $vaga['id'] ?>" tabindex="-1" aria-hidden="true">
                                                         <div class="modal-dialog modal-lg">
