@@ -20,11 +20,6 @@ if (isset($_POST['cadastrarEmpresa'])) {
     );
 
     $result = Empresas::save($data);
-    session_start();
-    unset($_SESSION['empresaId']);
-    unset($_SESSION['nomeEmpresa']);
-    $_SESSION['nomeEmpresa'] = $POST_['nomeFantasia'];
-    $_SESSION['empresaId'] = Empresas::findId($POST_['nomeFantasia']);
     header('location:../login/empresa');
 }
 ?>
