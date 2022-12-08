@@ -29,6 +29,32 @@ if (isset($_POST["deslogarAdmin"])) {
   <script src="https://kit.fontawesome.com/f8536a8b01.js" crossorigin="anonymous"></script>
   <link rel="icon" href="assets/img/logoFatecIcon.png" type="image/x-icon">
   <link href="assets/css/sidebars.css" rel="stylesheet">
+  <script>
+    function generatePDF() {
+      const element = document.getElementById('relatorio');
+      var opt = {
+        margin: 10,
+        filename: 'relatorio.pdf',
+        image: {
+          type: 'jpeg',
+          quality: 5
+        },
+        html2canvas: {
+          dpi: 192,
+          scale: 4,
+          letterRendering: true,
+          useCORS: true
+        },
+        jsPDF: {
+          unit: 'mm',
+          format: 'a4',
+          orientation: 'landscape'
+        }
+      };
+      // Choose the element that our invoice is rendered in.
+      html2pdf().set(opt).from(element).save();
+    }
+  </script>
 </head>
 
 <body>
@@ -80,6 +106,10 @@ if (isset($_POST["deslogarAdmin"])) {
           echo '<div class="dropdown text-end">
                        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-user rounded-circle" style="background-color: #6C757D1A;padding: 0.7rem;"></i></a>
                        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                       <li><a class="dropdown-item" type="button" onclick=" generatePDF()">Gerar relatório</a></li>
+                       <li>
+                       <hr class="dropdown-divider">
+                     </li>
                        <form method="post">
                        <li><button class="dropdown-item" type="submit" name="deslogarAdmin">Sair</button></li>
                        </form>

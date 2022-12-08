@@ -7,7 +7,7 @@ use PDO;
 
 class Admin
 {
-public static function findAllVagasPendentes()
+  public static function findAllVagasPendentes()
   {
     $conn = new Database();
     $result = $conn->executeQuery('SELECT * FROM vagas WHERE aprovada = 2  && ativa = 1 ORDER BY id ASC');
@@ -73,10 +73,34 @@ public static function findAllVagasPendentes()
     $result = $conn->executeQuery('SELECT COUNT(id) AS "vagasFechadas" FROM vagas  WHERE ativa = 1 && aprovada = 1  && fechada = 1 LIMIT 1');
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
-  public static function countCandidatosEmVagas()
+  public static function selecionarCandidataçoes()
   {
     $conn = new Database();
-    $result = $conn->executeQuery('SELECT COUNT(id_aluno) AS "candidatos" FROM vagapreenchida GROUP BY MONTH(dataPreenchimento)');
+    $result = $conn->executeQuery('SELECT COUNT(DISTINCT(id_aluno)) as "candidatos" FROM vagapreenchida GROUP BY id_vagas');
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
+  public static function alunoMaisRecente()
+  {
+    $conn = new Database();
+    $result = $conn->executeQuery('SELECT * FROM aluno ORDER BY id DESC LIMIT 1');
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
+  public static function empresaMaisRecente()
+  {
+    $conn = new Database();
+    $result = $conn->executeQuery('SELECT * FROM empresa ORDER BY id DESC LIMIT 1');
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
+  public static function vagaMaisRecente()
+  {
+    $conn = new Database();
+    $result = $conn->executeQuery('SELECT * FROM vagas ORDER BY id DESC LIMIT 1');
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
+  public static function candidataçaoMaisRecente()
+  {
+    $conn = new Database();
+    $result = $conn->executeQuery('SELECT * FROM vagas JOIN vagapreenchida ON(vagas.id = vagapreenchida.id_vagas) JOIN aluno ON (vagapreenchida.id_aluno = aluno.id) ORDER BY vagapreenchida.id DESC LIMIT 1');
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
 }

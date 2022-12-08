@@ -37,6 +37,7 @@ if (session_status() == PHP_SESSION_NONE){
         <label for="senha" class="form-label">Senha</label>
         <input type="password" class="form-control" name="senha">
       </div>
+      <p>Não possui Conta? <a href="/home/cadastro_empresa">Cadastre-se aqui</a></p>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
         <button type="submit" name="submitLogin" class="btn btn-primary">Acessar</button>
       </div>

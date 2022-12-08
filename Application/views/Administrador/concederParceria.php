@@ -1,7 +1,10 @@
 <?php
 
 use Application\models\Empresas;
-
+if (!isset($_SESSION['adminId'])) {
+    header('location: /administrador/login');
+    exit();
+}
 if (isset($_POST['definirParceria'])) {
     $data = array(
         'parceria' => $_POST['parceria'],

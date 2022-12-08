@@ -3,6 +3,11 @@
 use Application\models\Vagas;
 use Application\models\Empresas;
 
+if (!isset($_SESSION['empresaId'])) {
+    header('location: /login/empresa');
+    exit();
+}
+
 $minhasVagas = Empresas::findAll($_SESSION['empresaId']);
 
 if (isset($_POST['cadastrarVaga'])) {

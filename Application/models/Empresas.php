@@ -100,4 +100,25 @@ class Empresas
     $result = $conn->executeQuery("SELECT id FROM empresa WHERE nomeEmpresa = '$nomeEmpresa'");
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
+  public static function addFotoPerfil(array $data): bool
+  {
+    $fotoPerfil = $data['fotoPerfil'];
+    $id = $data['id'];
+    $conn = new Database();
+    $result = $conn->executeQuery(
+      "UPDATE empresa SET 
+      fotoPerfil = '$fotoPerfil' 
+      WHERE id = '$id'"
+    );
+    if ($result->rowCount() == 0) {
+      return false;
+    }
+    return true;
+  }
+  public static function selectEmpresa($id)
+  {
+    $conn = new Database();
+    $result = $conn->executeQuery("SELECT * FROM empresa WHERE id = '$id'");
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
 }

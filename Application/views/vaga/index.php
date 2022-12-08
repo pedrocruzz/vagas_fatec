@@ -2,16 +2,16 @@
 
 use Application\models\Vagas;
 
-if (session_status() == PHP_SESSION_NONE){
+if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-if(!isset($_SESSION['alunoId']) ){
+if (!isset($_SESSION['alunoId'])) {
     header('location: /login/aluno');
     exit();
 }
-foreach ($data['vagas'] as $key => $vaga){
-    if ($key == 0) { 
+foreach ($data['vagas'] as $key => $vaga) {
+    if ($key == 0) {
         $input = $vaga['id'];
     }
 }
@@ -56,16 +56,13 @@ if (isset($_POST['candidatarVaga'])) {
     $data = array(
         'id_vagas' => $_POST['id_vagas']
     );
-
     $result = Vagas::save($data);
-
-    if ($result) :
-        $_SESSION['sucesso'];
-        header('location: /vaga');
-        die();
-    else :
-        $_SESSION['erro'] = 'Erro';
-    endif;
+    $data['vagas'] = Vagas::findAll();
+    foreach ($data['vagas'] as $key => $vaga) {
+        if ($key == 0) {
+            $input = $vaga['id'];
+        }
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -100,6 +97,14 @@ if (isset($_POST['candidatarVaga'])) {
 
 <body>
     <div class="container">
+        <div class="d-flex justify-content-center">
+            <div class="ratio" style="--bs-aspect-ratio: 9%; width: 60%;height: 20%; margin: 0.5rem;">
+                <form method="POST">
+                    <input class=" border border-1-white rounded-pill lead fst-italic p-2" style="width: 100%;" type="search" name="titulo" placeholder="O que você procura?" aria-label="Search">
+                    <input type="submit" name="pesquisaDeVagas" style="display: none">
+                </form>
+            </div>
+        </div>
         <div class="d-flex justify-content-center">
             <div class="container">
                 <div class="row">
@@ -163,7 +168,7 @@ if (isset($_POST['candidatarVaga'])) {
                         <div class="modal-body">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">E-mail</label>
-                                <input type="email" class="form-control" value="<?= $_SESSION['alunoEmail']?>" id="exampleFormControlInput1" placeholder="name@example.com">
+                                <input type="email" class="form-control" value="<?= $_SESSION['alunoEmail'] ?>" id="exampleFormControlInput1" placeholder="name@example.com">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" class="form-label">Deseja informar algo mais?</label>

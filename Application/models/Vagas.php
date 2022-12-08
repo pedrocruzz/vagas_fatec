@@ -17,7 +17,7 @@ class Vagas
   public static function findAll()
   {
     $conn = new Database();
-    $result = $conn->executeQuery('SELECT * FROM vagas WHERE ativa = 1 && aprovada = 1 && fechada = 2');
+    $result = $conn->executeQuery('SELECT * FROM vagas WHERE ativa = 1 && aprovada = 1 && fechada = 2 ORDER BY id DESC');
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
 
@@ -27,7 +27,12 @@ class Vagas
     $result = $conn->executeQuery("SELECT * FROM vagas WHERE ativa = 1 && aprovada = 1 && fechada = 2 && id_empresa = '$idEmpresa'");
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
-
+  public static function findAllCandidaturasDesseAluno($idAluno)
+  {
+    $conn = new Database();
+    $result = $conn->executeQuery("SELECT * FROM vagas JOIN vagapreenchida ON (vagas.id = vagapreenchida.id_vagas) WHERE id_aluno = '$idAluno' && vagas.id = vagapreenchida.id_vagas");
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
   /**
    * Este método busca um usuário armazenados na base de dados com um
    * determinado ID
@@ -45,23 +50,55 @@ class Vagas
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  public static function save(array $data): bool
+  public static function checarSeJaCandidatou($idAluno, $idVaga)
   {
-    session_start();
     $conn = new Database();
-    $result = $conn->executeQuery(
-      'INSERT INTO vagapreenchida(id_vagas, id_aluno) VALUES(:id_vagas, :id_aluno)',
-      array(
-        ':id_vagas' => $data['id_vagas'],
-        ':id_aluno' => $_SESSION['alunoId'],
-      )
-    );
-
+    $result = $conn->executeQuery("SELECT * FROM vagapreenchida WHERE id_aluno = '$idAluno' && id_vagas = '$idVaga'");
+    $result->fetchAll(PDO::FETCH_ASSOC);
     if ($result->rowCount() == 0) {
       return false;
     }
     return true;
+  }
 
+  public static function save(array $data): bool
+  {
+    if (session_status() == PHP_SESSION_NONE) {
+      session_start();
+    }
+    $jaTem = Vagas::checarSeJaCandidatou($_SESSION['alunoId'], $data['id_vagas']);
+    if ($jaTem) {
+      echo ('<div class="d-flex justify-content-center">
+      <div class="alert alert-danger p-2 d-flex justify-content-center" style="width:400px;" role="alert">
+      Você já se candidatou a a essa vaga!
+      </div>
+      </div>');
+      return false;
+    } else {
+      $conn = new Database();
+      $result = $conn->executeQuery(
+        'INSERT INTO vagapreenchida(id_vagas, id_aluno) VALUES(:id_vagas, :id_aluno)',
+        array(
+          ':id_vagas' => $data['id_vagas'],
+          ':id_aluno' => $_SESSION['alunoId'],
+        )
+      );
+
+      if ($result->rowCount() == 0) {
+        echo ('<div class="d-flex justify-content-center">
+        <div class="alert alert-danger p-2 d-flex justify-content-center" style="width:400px;" role="alert">
+        Erro!
+        </div>
+        </div>');
+      return false;
+      }
+      echo ('<div class="d-flex justify-content-center">
+      <div class="alert alert-success p-2 d-flex justify-content-center" style="width:400px;" role="alert">
+      Candidatação concluída com sucesso!
+      </div>
+      </div>');
+      return true;
+    }
   }
   public static function cadastrarVaga(array $data): bool
   {
@@ -168,17 +205,20 @@ class Vagas
     $result = $conn->executeQuery('SELECT * FROM vagas WHERE ativa = 1 && aprovada = 1 ORDER BY id DESC LIMIT 6');
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
-  public static function findAllVagasFechadas(){
+  public static function findAllVagasFechadas()
+  {
     $conn = new Database();
     $result = $conn->executeQuery('SELECT * FROM vagas WHERE fechada = 1');
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
-  public static function pesquisarVagas($titulo){
+  public static function pesquisarVagas($titulo)
+  {
     $conn = new Database();
     $result = $conn->executeQuery("SELECT * FROM vagas WHERE titulo LIKE '%$titulo%' && ativa = 1 && aprovada = 1");
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
-  public static function findAllEstagios(){
+  public static function findAllEstagios()
+  {
     $conn = new Database();
     $result = $conn->executeQuery("SELECT * FROM vagas WHERE nivelExperiencia LIKE 'Estagiário' && ativa = 1 && aprovada = 1");
     return $result->fetchAll(PDO::FETCH_ASSOC);

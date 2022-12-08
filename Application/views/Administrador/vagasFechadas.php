@@ -1,3 +1,9 @@
+<?php
+if (!isset($_SESSION['adminId'])) {
+    header('location: /administrador/login');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

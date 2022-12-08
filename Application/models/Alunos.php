@@ -75,4 +75,35 @@ public static function save(array $data) : bool{
     $result = $conn->executeQuery("SELECT id FROM aluno WHERE email = '$email'");
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
+  public static function addFotoPerfil(array $data): bool
+  {
+    $fotoPerfil = $data['fotoPerfil'];
+    $id = $data['id'];
+    $conn = new Database();
+    $result = $conn->executeQuery(
+      "UPDATE aluno SET 
+      fotoPerfil = '$fotoPerfil' 
+      WHERE id = '$id'"
+    );
+    if ($result->rowCount() == 0) {
+      return false;
+    }
+    return true;
+  }
+  public static function selectAluno($id)
+  {
+    $conn = new Database();
+    $result = $conn->executeQuery("SELECT * FROM aluno WHERE id = '$id'");
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
+  public static function jaPossuiConta($email):bool
+  {
+    $conn = new Database();
+    $result = $conn->executeQuery("SELECT * FROM aluno WHERE email = '$email'");
+    $result->fetchAll(PDO::FETCH_ASSOC);
+    if ($result->rowCount() == 0) {
+      return false;
+    }
+    return true;
+  }
 }

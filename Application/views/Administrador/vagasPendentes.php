@@ -2,6 +2,11 @@
 
 use Application\models\Vagas;
 
+if (!isset($_SESSION['adminId'])) {
+    header('location: /administrador/login');
+    exit();
+}
+
 if (isset($_POST['aprovar'])) {
     $data = array(
         'status' => $_POST['status'],

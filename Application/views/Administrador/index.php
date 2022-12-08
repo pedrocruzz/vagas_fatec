@@ -12,33 +12,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/f8536a8b01.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <script>
-        function generatePDF() {
-            const element = document.getElementById('relatorio');
-            var opt = {
-                margin: 10,
-                filename: 'relatorio.pdf',
-                image: {
-                    type: 'jpeg',
-                    quality: 5
-                },
-                html2canvas: {
-                    dpi: 192,
-                    scale: 4,
-                    letterRendering: true,
-                    useCORS: true
-                },
-                jsPDF: {
-                    unit: 'mm',
-                    format: 'a4',
-                    orientation: 'landscape'
-                }
-            };
-            // Choose the element that our invoice is rendered in.
-            html2pdf().set(opt).from(element).save();
-        }
-    </script>
-
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sidebars/">
 
 
@@ -81,11 +54,6 @@
         a {
             text-decoration: none;
         }
-        #itemEscondido{
-            visibility: none; 
-            display: none;
-        }
-
     </style>
 
 
@@ -130,14 +98,6 @@
                             </ul>
                         </li>
                     </ul>
-                    <div class="dropdown" id="itemEscondido" style="padding-top: 310%; padding-left: 10px;">
-                        <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-gear"></i>
-                        </a>
-                        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                            <li><a class="dropdown-item" type="button" onclick=" generatePDF()"><i class="fa-solid fa-file"></i> Gerar relatório...</a></li>
-                        </ul>
-                    </div>
                 </div>
             </nav>
         </main>
