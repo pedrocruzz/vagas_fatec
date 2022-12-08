@@ -1,7 +1,7 @@
 # FATEC VAGAS 
 ### Projeto Interdisciplinar
 
-[Imagem da Home](https://github.com/pedrocruzz/vagas_fatec/tree/master/public/assets/img/printHome.png)
+![Home do Site](https://github.com/pedrocruzz/vagas_fatec/blob/master/public/assets/img/printHome.PNG "Home do Site")
 
 ### Objetivo:
 Com esse portal, pretendemos facilitar o contato entre alunos da FATEC Itapira e o mercado de trabalho, proporcionando assim o encontro de profissionais dedicados e diferenciados com as oportunidades indispensáveis disponibilizadas pelas empresas aqui cadastradas.
