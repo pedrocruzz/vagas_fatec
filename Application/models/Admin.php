@@ -73,7 +73,7 @@ class Admin
     $result = $conn->executeQuery('SELECT COUNT(id) AS "vagasFechadas" FROM vagas  WHERE ativa = 1 && aprovada = 1  && fechada = 1 LIMIT 1');
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
-  public static function selecionarCandidataçoes()
+  public static function selecionarInscricoes()
   {
     $conn = new Database();
     $result = $conn->executeQuery('SELECT COUNT(DISTINCT(id_aluno)) as "candidatos" FROM vagapreenchida GROUP BY id_vagas');
@@ -97,7 +97,7 @@ class Admin
     $result = $conn->executeQuery('SELECT * FROM vagas ORDER BY id DESC LIMIT 1');
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
-  public static function candidataçaoMaisRecente()
+  public static function inscricaoMaisRecente()
   {
     $conn = new Database();
     $result = $conn->executeQuery('SELECT * FROM vagas JOIN vagapreenchida ON(vagas.id = vagapreenchida.id_vagas) JOIN aluno ON (vagapreenchida.id_aluno = aluno.id) ORDER BY vagapreenchida.id DESC LIMIT 1');

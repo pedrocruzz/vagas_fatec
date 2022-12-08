@@ -1,12 +1,13 @@
 <?php
 
 use Application\models\Vagas;
+use Application\models\Empresas;
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-if (!isset($_SESSION['alunoId'])) {
+if (!isset($_SESSION['alunoId']) && !isset($_SESSION['empresaId']) && !isset($_SESSION['adminId'])) {
     header('location: /login/aluno');
     exit();
 }
@@ -37,7 +38,7 @@ if (isset($_POST['pesquisaDeVagas'])) {
 if (isset($_POST['VerApenasEstagios'])) {
     $data['vagas'] = Vagas::findAllEstagios();
     if (empty($data['vagas'])) {
-        echo '<h2 class="text-center text-muted position-absolute top-50 start-50 translate-middle">Não há esttágios cadastrados no momento!Redirecionando para a área de vagas...</h2>';
+        echo '<h2 class="text-center text-muted position-absolute top-50 start-50 translate-middle">Não há estágios cadastrados no momento!Redirecionando para a área de vagas...</h2>';
 
         header("refresh:3;url=/vaga/index");
     }
@@ -64,6 +65,7 @@ if (isset($_POST['candidatarVaga'])) {
         }
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -93,6 +95,17 @@ if (isset($_POST['candidatarVaga'])) {
     button:focus {
         outline: orange 5px auto;
     }
+
+    #fotoPerfil {
+        visibility: visible;
+        <?php $dadosempresa = Empresas::selectEmpresa($vaga['id_empresa']); 
+         foreach ($dadosempresa as $key => $empresa) {
+            if ($empresa['fotoPerfil'] == NULL) {
+                echo 'visibility: hidden;';
+                echo 'display: none;';
+            }
+        } ?>
+    }
 </style>
 
 <body>
@@ -112,11 +125,33 @@ if (isset($_POST['candidatarVaga'])) {
                         <div class="bg-light rounded-3 ">
                             <?php foreach ($data['vagas'] as $key => $vaga) { ?>
                                 <?php if ($vaga['id'] == $input) { ?>
+                                    <?php $dadosempresa = Empresas::selectEmpresa($vaga['id_empresa']); ?>
                                     <div class="container-fluid py-5 bg-secondary bg-opacity-10">
-                                        <h2 class="fw-bold"><?= $vaga['titulo'] ?></h2>
-                                        <a href="#" class="link-secondary">
-                                            <p class="fw-normal fs-5">publicado por <?= $vaga['nome_empresa'] ?></p>
-                                        </a>
+                                        <div class="row border-bottom">
+                                            <div class="col-6 col-sm-3" id="fotoPerfil"  style="margin-bottom: 1rem;padding-bottom: 1rem;">
+                                                <?php foreach ($dadosempresa as $key => $empresa) {
+                                                    if ($empresa['fotoPerfil'] != NULL) {
+                                                        echo '<img class="" src="/assets/profilePicsEmpresas/';
+                                                        echo $empresa["fotoPerfil"];
+                                                        echo '"height="120px" width="120px">';
+                                                    }else{
+                                                        echo '<img class="" src="/assets/img/empresas.png"height="120px" width="120px" style="background-color:white;padding:0.5%;">';
+                                                    }
+                                                } ?>
+                                            </div>
+                                            <div class="col-6 col-sm-8" style="margin: 0rem; padding-bottom: 0.%; padding-left: 0;">
+                                                <h2 class="fw-bold"><?= $vaga['titulo'] ?></h2>
+                                                <a href="#" class="link-secondary">
+                                                    <p class="fw-normal fs-5">publicado por <?= $vaga['nome_empresa'] ?> <?php if ($empresa['parceria'] == 1) { ?>
+                                                            <i class="fa-solid fa-medal" data-bs-toggle="tooltip" title="Selo de parceria" style="color:#dc3545;"></i>
+                                                        <?php } ?>
+                                                    </p>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <p class="text-muted">(Vaga <?= $vaga['tipo'] ?>)</p>
+                                        <p class="col-md-8">Salário: <?= $vaga['salario'] ?></p>
+                                        <p class="col-md-8">Requere profissional de nível: <?= $vaga['nivelExperiencia'] ?></p>
                                         <p class="col-md-8">Qualificações necessárias:</p>
                                         <p class="col-md-8"><?= $vaga['descricaoQualificacao']; ?></p>
                                         <p class="col-md-8">Funcões que serão exercidas:</p>
@@ -142,7 +177,7 @@ if (isset($_POST['candidatarVaga'])) {
                                                         <p class="col-4 mb-1 fw-normal" name="empresa"><u><?= $vaga['nome_empresa'] ?></u></p>
                                                         <small class="col-4">Há <?= date('d', time() - strtotime($vaga['dataAbrir'])) ?> dias</small>
                                                     </div>
-                                                    <div class="col-10 mb-1 small" pattern="\d*" maxlength="4"><?= $vaga['descricaoFuncoes']; ?></div>
+                                                    <div class="col-10 mb-1 small" pattern="\d*" maxlength="4"> <p class="col-md-8">Qualificações necessárias:</p><?= $vaga['descricaoQualificacao']; ?></div>
                                                 </a>
                                             </button>
                                         <?php } ?>

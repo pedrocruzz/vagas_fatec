@@ -3,12 +3,14 @@
 use Application\models\Vagas;
 use Application\models\Empresas;
 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 if (!isset($_SESSION['empresaId'])) {
     header('location: /login/empresa');
     exit();
 }
-
-$minhasVagas = Empresas::findAll($_SESSION['empresaId']);
 
 if (isset($_POST['cadastrarVaga'])) {
     $data = array(
@@ -21,6 +23,8 @@ if (isset($_POST['cadastrarVaga'])) {
         'tipo' => $_POST['tipo'],
         'experiencia' => $_POST['experiencia'],
         'disponibilidade' => $_POST['disponibilidade'],
+        'id_empresa' => $_SESSION['empresaId'],
+        'nome_empresa' => $_SESSION['nomeEmpresa'],
     );
     $result = Vagas::cadastrarVaga($data);
     header('location:/empresa/minhas_vagas');
@@ -49,6 +53,7 @@ if (isset($_POST['excluirVaga'])) {
     $result = Vagas::excluirVaga($data);
     header('location:/empresa/minhas_vagas');
 }
+$minhasVagasEmAndamento = Empresas::findAllVagasDessaEmpresaEmAndamento($_SESSION['empresaId']);
 
 ?>
 
@@ -64,6 +69,8 @@ if (isset($_POST['excluirVaga'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>
     <script src="https://kit.fontawesome.com/f8536a8b01.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+
     <style>
         #corpoCartao {
             height: 600px;
@@ -222,10 +229,10 @@ if (isset($_POST['excluirVaga'])) {
             <div class="container" id="corpoCartao">
                 <div class="card-body">
                     <div class="accordion" id="accordionPanelsStayOpenExample">
-                        <?php if (empty($data['vagas'])) {
-                            echo '<p class=" text-center text-muted">Você não possui vagas no momento. Para cadastrar uma vaga, clique no botão acima!</p>';
+                        <?php if (empty($minhasVagasEmAndamento)) {
+                            echo '<h3 class=" text-center text-muted" style="padding-top:25%;">Você não possui vagas no momento. Para cadastrar uma vaga, clique no botão acima!</h3>';
                         } ?>
-                        <?php foreach ($data['vagas'] as $key => $vaga) { ?>
+                        <?php foreach ($minhasVagasEmAndamento as $key => $vaga) { ?>
                             <div class="accordion-item">
                                 <div class="accordion-header" id="panelsStayOpen-headingOne">
                                     <div class="card-header  fw-normal">
@@ -279,8 +286,7 @@ if (isset($_POST['excluirVaga'])) {
                                                         </div>
                                                     </div>
                                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAterar<?= $vaga['id'] ?>">
-                                                        <i class="fa-solid fa-penci
-                                                        l"></i>
+                                                    <i class="fa-solid fa-pencil"></i>
                                                     </button>
                                                     <div class="modal fade" id="modalAterar<?= $vaga['id'] ?>" tabindex="-1" aria-hidden="true">
                                                         <div class="modal-dialog modal-lg">
@@ -434,7 +440,7 @@ if (isset($_POST['excluirVaga'])) {
                                                     </div>
                                                 <?php } elseif ($vaga['aprovada'] == 2) { ?>
                                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAterar<?= $vaga['id'] ?>">
-                                                        <i class="fa-solid fa-pencil"></i>
+                                                    <i class="fa-solid fa-pencil"></i>
                                                     </button>
                                                     <div class="modal fade" id="modalAterar<?= $vaga['id'] ?>" tabindex="-1" aria-hidden="true">
                                                         <div class="modal-dialog modal-lg">

@@ -93,7 +93,7 @@ if (isset($_POST["deslogarAdmin"])) {
                        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-building rounded-circle" style="background-color: #6C757D1A;padding: 0.7rem;"></i></a>
                        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
                        <li><a class="dropdown-item" href="../empresa/perfil">Perfil</a></li>
-                       <li><a class="dropdown-item" href="../empresa/minhas_vagas">Minhas Vagas</a></li>
+                       <li><a class="dropdown-item" href="../empresa/minhas_vagas" id="podeVer">Minhas Vagas</a></li>
                        <li>
                          <hr class="dropdown-divider">
                        </li>
@@ -106,7 +106,8 @@ if (isset($_POST["deslogarAdmin"])) {
           echo '<div class="dropdown text-end">
                        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-user rounded-circle" style="background-color: #6C757D1A;padding: 0.7rem;"></i></a>
                        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                       <li><a class="dropdown-item" type="button" onclick=" generatePDF()">Gerar relatório</a></li>
+                       <li><a class="dropdown-item" type="button" style="display:none;visibility:hidden;" id="gerarRelatorio" onclick=" generatePDF()">Gerar relatório</a></li>
+                       <li><a class="dropdown-item" href="../administrador/dashboard" type="button" style="display:block;visibility:visible;" id="verDashboard">Dashboard</a></li>
                        <li>
                        <hr class="dropdown-divider">
                      </li>

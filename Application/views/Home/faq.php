@@ -88,7 +88,7 @@
                 </h2>
                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <strong>Ao entrar na área de vagas e selecionar a vaga desejada, clicar no botão "Desejo me candidatar".</strong> Seu currículo, já inserido no seu perfil no momento do cadastro, será enviado automaticamente. A candidatação à vagas pode ser cancelada, se desejado, no perfil.
+                        <strong>Ao entrar na área de vagas e selecionar a vaga desejada, clicar no botão "Desejo me candidatar".</strong> Seu currículo, já inserido no seu perfil no momento do cadastro, será enviado automaticamente.
                     </div>
                 </div>
             </div>

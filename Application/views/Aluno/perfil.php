@@ -30,7 +30,7 @@ if (isset($_POST["adicionarProfilePic"])) {
             );
 
             $result = Alunos::addFotoPerfil($data);
-            header('location:/empresa/perfil');
+            header('location:/aluno/perfil');
         }
     }
 }
@@ -55,7 +55,7 @@ if (isset($_POST["adicionarProfilePic"])) {
             } ?>
         }
 
-        #candidatacoes {
+        #candidaturas {
             <?php if (!(isset($_SESSION) &&  isset($_SESSION['alunoId'])) && !($_SESSION['alunoId'] != 0) && (isset($_SESSION) && isset($_SESSION['adminId'])  && $_SESSION['adminId'] != 0)) {
                 echo 'visibility: hidden;';
             } else
@@ -153,7 +153,7 @@ if (isset($_POST["adicionarProfilePic"])) {
                             </div>
                         </div>
                     </div>
-                    <div class="card" style="margin-top: 2rem;" id="candidatacoes">
+                    <div class="card" style="margin-top: 2rem;" id="candidaturas">
                         <h1 class="card-title text-center border-bottom p-2"> Candidatou-se em:</h1>
                         <div class="card-body" style="height: 500px;overflow-y: scroll;">
                             <?php if (empty($dataVagas)) {

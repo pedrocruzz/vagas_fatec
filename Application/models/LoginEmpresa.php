@@ -41,7 +41,7 @@ class LoginEmpresa
                 unset($_SESSION['nomeEmpresa']);
                 $_SESSION['nomeEmpresa'] = $user['nomeFantasia'];
                 $_SESSION['empresaId'] = $user['id'];
-                header('location: /empresa/minhas_vagas');
+                header('location: /empresa/perfil');
             }
         }
     }

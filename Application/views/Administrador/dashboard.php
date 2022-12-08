@@ -10,8 +10,8 @@ $dadosAluno = Admin::countAlunos();
 $dadosEmpresa = Admin::countEmpresas();
 $dadosVagas = Admin::countVagas();
 $c = 0;
-$dadosCandidataçoes = Admin::selecionarCandidataçoes();
-foreach ($dadosCandidataçoes as $key => $dado) {
+$dadosInscricoes = Admin::selecionarInscricoes();
+foreach ($dadosInscricoes as $key => $dado) {
   $c = $dado["candidatos"] + $c;
 }
 foreach ($dadosEmpresa as $key => $dado) {
@@ -57,7 +57,7 @@ $dadosInativos = array(
 $alunoMaisRecente = Admin::alunoMaisRecente();
 $empresaMaisRecente = Admin::empresaMaisRecente();
 $vagaMaisRecente = Admin::vagaMaisRecente();
-$candidataçaoMaisRecente = Admin::candidataçaoMaisRecente();
+$inscricaoMaisRecente = Admin::inscricaoMaisRecente();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,6 +75,10 @@ $candidataçaoMaisRecente = Admin::candidataçaoMaisRecente();
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
   <script>
+    document.getElementById("gerarRelatorio").style.visibility = "visible";
+    document.getElementById("gerarRelatorio").style.display = "block";
+    document.getElementById("verDashboard").style.visibility = "hidden";
+    document.getElementById("verDashboard").style.display = "none";
   </script>
 </head>
 
@@ -253,8 +257,8 @@ $candidataçaoMaisRecente = Admin::candidataçaoMaisRecente();
             </div>
           </div>
         <?php } ?>
-        <?php foreach ($candidataçaoMaisRecente as $key => $aluno) { ?>
-          <h3 class="p-2">Candidatação Em Vaga:</h3>
+        <?php foreach ($inscricaoMaisRecente as $key => $aluno) { ?>
+          <h3 class="p-2">Inscrição Em Vaga:</h3>
           <div class="card" style="margin-bottom: 3%;">
             <div class="card-body">
               <div class="row">
@@ -333,7 +337,7 @@ $candidataçaoMaisRecente = Admin::candidataçaoMaisRecente();
         'Empresas',
         'Alunos',
         'Vagas',
-        'Candidatações em Vagas',
+        'Inscrições em Vagas',
       ],
       datasets: [{
         data: <?php echo json_encode($dados) ?>,

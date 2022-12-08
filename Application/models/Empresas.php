@@ -37,14 +37,7 @@ class Empresas
     return true;
   }
 
-  public static function findAll()
-  {
-    $conn = new Database();
-    $result = $conn->executeQuery('SELECT * FROM vagas WHERE id_empresa = 1 && ativa = 1 ORDER BY id DESC');
-    return $result->fetchAll(PDO::FETCH_ASSOC);
-  }
 
-  
   public static function findVisualizar($idVaga)
   {
     $conn = new Database();
@@ -112,6 +105,12 @@ class Empresas
     $result = $conn->executeQuery("SELECT id FROM empresa WHERE nomeEmpresa = '$nomeEmpresa'");
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
+  public static function findNomeEmpresa($id)
+  {
+    $conn = new Database();
+    $result = $conn->executeQuery("SELECT nomeEmpresa FROM empresa WHERE id = '$id'");
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
   public static function addFotoPerfil(array $data): bool
   {
     $fotoPerfil = $data['fotoPerfil'];
@@ -133,6 +132,16 @@ class Empresas
     $result = $conn->executeQuery("SELECT * FROM empresa WHERE id = '$id'");
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
+  public static function checarSeTemVagas($id)
+  {
+    $conn = new Database();
+    $result = $conn->executeQuery("SELECT id_empresa FROM vagapreenchida JOIN vagas ON(vagas.id = vagapreenchida.id) WHERE id_empresa = '$id'");
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
+  public static function findAllVagasDessaEmpresaEmAndamento($id)
+  {
+    $conn = new Database();
+    $result = $conn->executeQuery("SELECT * FROM vagas WHERE id_empresa = '$id'");
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
 }
-
-

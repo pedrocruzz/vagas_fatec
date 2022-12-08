@@ -8,9 +8,8 @@ class Empresa extends Controller
 {
   public function minhas_vagas()
   {
-    $data = Empresas::findAll();
     $vagaVz = Empresas::findVisualizar($idVaga = null);
-    $this->view('empresa/minhas_vagas', ['vagas' => $data], ['vagasPreenchidas' => $vagaVz]);
+    $this->view('empresa/minhas_vagas', ['vagasPreenchidas' => $vagaVz]);
   }
 
   public function perfil()

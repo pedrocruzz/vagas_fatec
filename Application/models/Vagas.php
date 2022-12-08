@@ -94,7 +94,7 @@ class Vagas
       }
       echo ('<div class="d-flex justify-content-center">
       <div class="alert alert-success p-2 d-flex justify-content-center" style="width:400px;" role="alert">
-      Candidatação concluída com sucesso!
+      Inscrição concluída com sucesso!
       </div>
       </div>');
       return true;
@@ -120,7 +120,7 @@ class Vagas
         ':disponibilidade' => $data['disponibilidade'],
         ':dataFechar' => date('Y-m-d', strtotime("$dataAbrir + $disponibilidade days")),
         ':id_empresa' => $data['id_empresa'],
-        ':nome_empresa' => $data['nome_empresa'],
+        ':nome_empresa' =>  $data['nome_empresa'],
       )
     );
     if ($result->rowCount() == 0) {

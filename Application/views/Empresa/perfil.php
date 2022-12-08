@@ -3,7 +3,6 @@
 use Application\models\Vagas;
 use Application\models\Empresas;
 
-
 if (isset($_POST['verEmpresa'])) {
     $idEmpresa = $_POST['id'];
     $dataVagas = Vagas::findAllVagasDessaEmpresa($idEmpresa);
@@ -56,51 +55,69 @@ if (isset($_POST["adicionarProfilePic"])) {
             } ?>
         }
     </style>
+    <?php foreach ($dadosEmpresa  as $key => $empresa) {
+        if ($empresa['aprovada'] == 2) {
+            echo '    <script>
+document.getElementById("podeVer").style.visibility = "hidden";
+document.getElementById("podeVer").style.display = "none";
+</script>';
+        }
+    }
+    ?>
 </head>
 
 <body>
     <div class="container">
         <div class="row">
-        <?php foreach ($dadosEmpresa  as $key => $empresa) { ?>
-                    <div class="col">
-                        <div class="rounded-circle" style="background-color:#6C757D1A;height:350px;width:350px;padding:5.2%;">
-                            <?php if ($empresa['fotoPerfil'] == NULL) {
-                                echo '<figure class="figure d-flex justify-content-center" style="padding-top: 5px;padding-bottom: 5px;">
+            <?php foreach ($dadosEmpresa  as $key => $empresa) { ?>
+                <?php
+                if ($empresa['aprovada'] == 2) {
+                    echo ('<div class="d-flex justify-content-center">
+                    <div class="alert alert-warning p-2 d-flex justify-content-center" style="width:400px;" role="alert">
+                    Aguardando Aprovação do Cadastro...
+                    </div>
+                    </div>');
+                }
+                ?>
+                <div class="col">
+                    <div class="rounded-circle" style="background-color:#6C757D1A;height:350px;width:350px;padding:5.2%;">
+                        <?php if ($empresa['fotoPerfil'] == NULL) {
+                            echo '<figure class="figure d-flex justify-content-center" style="padding-top: 5px;padding-bottom: 5px;">
                             <img src="/assets/img/user.png" class="figure-img img-fluid rounded" alt="Ícone user" width="310px" height="310px">
                             </figure>';
-                            } else {
-                                echo '<img class="rounded-circle d-flex justify-content-center" src="/assets/profilePicsEmpresas/';
-                                echo $empresa["fotoPerfil"];
-                                echo '"height="310px" width="310px" >';
-                            } ?>
-                        </div>
-                        <div class="col d-flex justify-content-start" id="addPic">
-                            <button type="button" class="btn btn-secondary" style="height: 45px;" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <i class="fa-solid fa-pencil"></i>
-                            </button>
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Alterar Foto de Perfil</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form method="POST" action="/empresa/perfil" enctype="multipart/form-data">
-                                                <label for="fotoPerfil" class="form-label">Selecione uma foto....</label>
-                                                <input type="file" class="form-control form-control-sm text-muted" name="fotoPerfil" id="fotoPerfil">
-                                                <input type="hidden" value="<?= $_SESSION['empresaId'] ?>" name="id">
-                                        </div>
-                                        <div class="modal-footer d-flex justify-content-center">
-                                            <button class="btn btn-primary" type="submit" name="adicionarProfilePic" id="adicionarProfilePic">Salvar</button>
-                                        </div>
-                                        </form>
+                        } else {
+                            echo '<img class="rounded-circle d-flex justify-content-center" src="/assets/profilePicsEmpresas/';
+                            echo $empresa["fotoPerfil"];
+                            echo '"height="310px" width="310px" >';
+                        } ?>
+                    </div>
+                    <div class="col d-flex justify-content-start" id="addPic">
+                        <button type="button" class="btn btn-secondary" style="height: 45px;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <i class="fa-solid fa-pencil"></i>
+                        </button>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Alterar Foto de Perfil</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
+                                    <div class="modal-body">
+                                        <form method="POST" action="/empresa/perfil" enctype="multipart/form-data">
+                                            <label for="fotoPerfil" class="form-label">Selecione uma foto....</label>
+                                            <input type="file" class="form-control form-control-sm text-muted" name="fotoPerfil" id="fotoPerfil">
+                                            <input type="hidden" value="<?= $_SESSION['empresaId'] ?>" name="id">
+                                    </div>
+                                    <div class="modal-footer d-flex justify-content-center">
+                                        <button class="btn btn-primary" type="submit" name="adicionarProfilePic" id="adicionarProfilePic">Salvar</button>
+                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-            <div class="col">
+                </div>
+                <div class="col">
                     <div class="card">
                         <div class="card-body" style="width: 700px;height: auto;">
                             <div class="row">
@@ -161,7 +178,7 @@ if (isset($_POST["adicionarProfilePic"])) {
                         </div>
                     </div>
                 <?php } ?>
-            </div>
+                </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
