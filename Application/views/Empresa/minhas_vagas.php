@@ -273,9 +273,27 @@ $minhasVagasEmAndamento = Empresas::findAllVagasDessaEmpresaEmAndamento($_SESSIO
                                                                 </div>
 
                                                                 <div class="modal-body" style="font-size:15px;">
-                                                                    <?php $idVz = $vaga['id']; $vagaVz['vagasPreenchidas'] = Empresas::findVisualizar($idVaga = $idVz); ?>
+                                                                    <?php $idVz = $vaga['id'];
+                                                                    $vagaVz['vagasPreenchidas'] = Empresas::findVisualizar($idVaga = $idVz); ?>
                                                                     <?php foreach ($vagaVz['vagasPreenchidas'] as $vagasVz) { ?>
-                                                                        <?= $vagasVz['nome'] ?>
+                                                                        <div class="ca  rd" style="margin-bottom: 3%;">
+                                                                            <div class="card-body">
+                                                                                <div class="row">
+                                                                                    <div class="col text-start">
+                                                                                        <h5 class="card-title"><?= $vagasVz['nome'] ?> <nobr class="card-title"><?= $vagasVz['sobrenome'] ?></nobr>
+                                                                                        </h5>
+                                                                                        <p class="fw-normal"> Curso:
+                                                                                            <nobr class="text-muted"><?= $vagasVz['curso'] ?></nobr>
+                                                                                        </p>
+                                                                                        <form action="../aluno/perfil" method="POST">
+                                                                                            <input type="hidden" name="id" value="<?= $vagasVz['id'] ?>">
+                                                                                            <button class="btn btn-primary" name="verAluno" type="submit">Ver Perfil</button>
+                                                                                        </form>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
                                                                     <?php } ?>
                                                                 </div>
                                                                 <div class="modal-footer">
@@ -286,7 +304,7 @@ $minhasVagasEmAndamento = Empresas::findAllVagasDessaEmpresaEmAndamento($_SESSIO
                                                         </div>
                                                     </div>
                                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAterar<?= $vaga['id'] ?>">
-                                                    <i class="fa-solid fa-pencil"></i>
+                                                        <i class="fa-solid fa-pencil"></i>
                                                     </button>
                                                     <div class="modal fade" id="modalAterar<?= $vaga['id'] ?>" tabindex="-1" aria-hidden="true">
                                                         <div class="modal-dialog modal-lg">
@@ -440,7 +458,7 @@ $minhasVagasEmAndamento = Empresas::findAllVagasDessaEmpresaEmAndamento($_SESSIO
                                                     </div>
                                                 <?php } elseif ($vaga['aprovada'] == 2) { ?>
                                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAterar<?= $vaga['id'] ?>">
-                                                    <i class="fa-solid fa-pencil"></i>
+                                                        <i class="fa-solid fa-pencil"></i>
                                                     </button>
                                                     <div class="modal fade" id="modalAterar<?= $vaga['id'] ?>" tabindex="-1" aria-hidden="true">
                                                         <div class="modal-dialog modal-lg">

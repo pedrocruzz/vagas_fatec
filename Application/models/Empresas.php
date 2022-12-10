@@ -141,7 +141,7 @@ class Empresas
   public static function findAllVagasDessaEmpresaEmAndamento($id)
   {
     $conn = new Database();
-    $result = $conn->executeQuery("SELECT * FROM vagas WHERE id_empresa = '$id'");
+    $result = $conn->executeQuery("SELECT * FROM vagas WHERE id_empresa = '$id' && ativa = 1");
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
 }
